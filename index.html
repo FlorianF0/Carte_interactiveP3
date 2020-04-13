@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Carte intéractive</title>
+
+	<link rel="stylesheet" href="assets/css/main.css">
+	<link rel="stylesheet" href="assets/css/diapo.css">
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+
+</head>
+
+<body>
+	<section class="slideshow">
+		<div class="container">
+
+			<div class="slider">
+
+				<figure>
+					<img src="images/img1_Paris.jpg">
+					<figcaption>Louer un vélo pour vous déplacer rapidement dans Paris !</figcaption>
+				</figure>
+
+				<figure>
+					<img src="images/img3_velo_ConvertImage.jpg">
+					<figcaption>Regardez la station la plus proche de votre position sur la map. Cliquez sur la station, vous aurez son adresse, et le nombre de vélos disponibles.</figcaption>
+				</figure>
+
+				<figure>
+					<img src="images/paris_electrique_3_ConvertImage.jpg">
+					<figcaption>Il ne vous reste plus qu'à reserver le vélo grâce au formulaire puis à aller le chercher dans les 20 minutes qui suivent. Si vous dépassez ce temps, il faudra refaire une réservation du vélo.</figcaption>
+				</figure>
+
+				<figure>
+					<img src="images/paris_electrique_3_ConvertImage.jpg">
+					<figcaption>Maintenant vous pouvez profiter d'une belle balade sous un soleil radieux.</figcaption>
+				</figure>
+
+				<figure>
+					<img src="images/paris_electrique_3_ConvertImage.jpg">
+					<figcaption>Pour terminer, déposez le vélo dans une station où des places sont disponibles.</figcaption>
+				</figure>
+
+				<figure>
+					<img src="images/img1_Paris.jpg">
+					<figcaption>Louer un vélo pour vous déplacer rapidement dans Paris !</figcaption>
+				</figure>
+			</div>
+		</div>
+
+		<div class="slideReader">
+			<a class="arrowPrev" href=""> <i class="fa fa-arrow-left" aria-hidden="true">  </i></a>
+			<a class="pauseBtn" href="">  <i class="fa fa-pause" aria-hidden="true">       </i></a>
+			<a class="playBtn" href="">   <i class="fa fa-play" aria-hidden="true">        </i></a>
+			<a class="arrowNext" href=""> <i class="fa fa-arrow-right" aria-hidden="true"> </i></a>
+		</div>
+	</section>
+
+	<main>
+		<map>
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d67965.47269047145!2d2.2910431441336474!3d48.85931198140219!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2sParis!5e0!3m2!1sfr!2sfr!4v1586448551410!5m2!1sfr!2sfr" width="600" height="450" frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+		</map>
+
+		<reservationForm>
+			<h2>Détails de la station</h2>
+
+			<p>Adresse: </p>
+
+			<ul>
+				<li>x places</li>
+				<li>x vélos disponibles</li>
+			</ul>
+
+			<label>Nom :</label>
+			<input id="nom" type="text" name="Nom"><br/>
+
+			<label>Prénom :</label>
+			<input type="text" name="Prénom"><br/>
+
+			<input id="btnReservation" type="button" name="Réservation" value="Réservation">
+
+		</reservationForm>
+	</main>
+
+
+
+
+
+</body>
+</html>

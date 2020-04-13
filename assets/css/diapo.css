@@ -1,0 +1,111 @@
+
+section.slideshow {
+	position: relative;
+	width: 960px;
+	height: 240px;
+	padding: 10px;
+	margin: 0 auto;
+	background-color: black;
+	border-radius:5px;
+	box-shadow: 3px 3px 3px rgba(100,100,100,.4);
+
+}
+
+/*section.slideshow:before {
+	left: -5px;
+	top: 167px;
+	width: 900px;
+	height: 20px;
+	background: #aaa;
+
+	border-radius: 140px / 2px;
+	box-shadow: 0 0 5px #aaa, 0 0 10px #888, 0 0 15px #666;
+
+}
+
+section.slideshow:after {
+	left: 8px;
+	top: 168px;
+	width: 255px;
+	height: 2px;
+	background: #666;
+	
+	border-radius: 125px / 1px;
+	box-shadow: 0 0 5px #444, 0 0 8px #333, 0 0 10px #666;
+
+}*/
+
+
+section.slideshow .container {
+	position: relative;
+	width: 960px;
+	height: 240px;
+	overflow: hidden;
+}
+
+section.slideshow .slider {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 600%;
+	height: 240px;
+	animation: slider 40s infinite;
+
+}
+
+section.slideshow figure {
+	position: relative;
+	display: inline-block;
+	padding:0;
+	margin: 0;
+	margin-right:-4px; 
+}
+
+section.slideshow figcaption {
+	position: absolute;
+	width: 50%;
+	left: 0;
+	right: 0;
+	bottom: 5px;
+	padding: 20px;
+	margin: 0 auto;
+	margin-bottom: 20px;
+	border-radius: 10px;
+	background-color: rgb(0,0,0, 0.5);
+	text-align: center;
+	color: white;
+	font-family: "Georgia";
+}
+
+@-moz-keyframes slider {
+	0%, 12%, 100% { left: 0 }
+	20%, 32%	  { left: -100% }
+	40%, 52%	  { left: -200% }
+	60%, 72%      { left: -300% } 
+	80%, 92%	  { left: -400% }
+	99.99%		  { left: -500% }
+}
+
+
+.slideReader {
+	position: relative;
+	bottom: 14px;
+	width: 8.4rem;
+	margin:0 auto;
+	background-color: white;
+	border-radius: 2px;
+	padding: 5px;
+	box-shadow: 1px grey inset;
+	
+}
+
+.arrowPrev,
+.arrowNext,
+.pauseBtn,
+.playBtn {
+	color: black;
+	font-size: 1.5rem;
+	padding: 5px;
+}
+
+
