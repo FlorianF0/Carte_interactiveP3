@@ -10,9 +10,21 @@
 
 	<link rel="stylesheet" href="assets/css/main.css">
 	<link rel="stylesheet" href="assets/css/diapo.css">
+	<link rel="stylesheet" href="assets/css/carte.css">
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
-	<script type="text/javascript" src="assets/js/slider.js"></script>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+   crossorigin=""/>
+
+  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+   crossorigin=""></script>
+
+	<!-- <script type="text/javascript" src="assets/js/slider.js"></script> -->
+	<script type="text/javascript" src="assets/js/carte.js"></script>
+	<script type="text/javascript" src="assets/js/reservation.js"></script>
+	<script type="text/javascript" src="assets/js/main.js" defer></script>
     
 
 </head>
@@ -64,29 +76,7 @@
 	</section>
 
 	<main>
-		<map>
-			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d67965.47269047145!2d2.2910431441336474!3d48.85931198140219!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2sParis!5e0!3m2!1sfr!2sfr!4v1586448551410!5m2!1sfr!2sfr" width="600" height="450" frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-		</map>
-
-		<reservationForm>
-			<h2>Détails de la station</h2>
-
-			<p>Adresse: </p>
-
-			<ul>
-				<li>x places</li>
-				<li>x vélos disponibles</li>
-			</ul>
-
-			<label>Nom :</label>
-			<input id="nom" type="text" name="Nom"><br/>
-
-			<label>Prénom :</label>
-			<input type="text" name="Prénom"><br/>
-
-			<input id="btnReservation" type="button" name="Réservation" value="Réservation">
-
-		</reservationForm>
+		
 	</main>
 
 
