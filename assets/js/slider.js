@@ -1,54 +1,71 @@
 
 
-// class Slider {
-// 	constuctor() {
-//		this.slide = document.getElementsByClassname('slider_item');
-//		this.sliderLength = slide.length;
+class Slider {
+	constructor(domTarget) {
+		this.dom = document.createElement("slideReader");
+		domTarget.appendChild(this.dom);
+		this.mainTemplate();		
+		
+		// var figures = document.querySelectorAll('.slider figure');
+		// this.prev();
+		// this.next();
 
-//		this.counter = 0;
-//		
+	}
 
-// 	}
+	mainTemplate(){
+    this.dom.innerHTML = `
+      	<a class="arrowPrev" href=""> <i class="fa fa-arrow-left" aria-hidden="true">  </i></a>
+		<a class="pauseBtn" href="">  <i class="fa fa-pause" aria-hidden="true">       </i></a>
+		<a class="playBtn" href="">   <i class="fa fa-play" aria-hidden="true">        </i></a>
+		<a class="arrowNext" href=""> <i class="fa fa-arrow-right" aria-hidden="true"> </i></a>
+    `;
+  	}
 
-// 	prev() {
-// 		this.prevBtn = document.getElementsByClassname('arrowPrev');
-// 	}
-	
-//  next {
-//		this.nextBtn = document.getElementsByClassName('arrowNext');
-//  }
+	prev() {
+		var prevBtn = document.querySelector('.arrowPrev');
 
-// }
+		prevBtn.addEventListener('click', function(){
+
+		});
+	}
+    next() {
+    	var nextBtn = document.querySelector('.arrowNext');
+
+    	nextBtn.addEventListener('click', function(){
+			
+		});
+ 	}
+}
 
 
-let prevBtn = document.querySelector('arrowPrev');
-let nextBtn = document.querySelector('arrowNext');
+// let prevBtn = document.querySelector('arrowPrev');
+// let nextBtn = document.querySelector('arrowNext');
 
-let slide = document.querySelectorAll('slider_item');
-let sliderLength = slide.length;
+// let slide = document.querySelectorAll('slider_item');
+// let sliderLength = slide.length;
 
-let counter = 0;
+// let counter = 0;
 
-slide[counter].classList.add('active');
+// slide[counter].classList.add('active');
 
-prevBtn.addEventListener('click', () => {
-    slide[counter].classList.remove('active');
-    counter--;
+// prevBtn.addEventListener('click', () => {
+//     slide[counter].classList.remove('active');
+//     counter--;
 
-    if(counter < 0) {
-        counter = sliderLength - 1;
-    }
+//     if(counter < 0) {
+//         counter = sliderLength - 1;
+//     }
 
-    slide[counter].classList.add('active');
-});
+//     slide[counter].classList.add('active');
+// });
 
-nextBtn.addEventListener('click', () => {
-    slide[counter].classList.remove('active');
-    counter++;
+// nextBtn.addEventListener('click', () => {
+//     slide[counter].classList.remove('active');
+//     counter++;
 
-    if(counter >= sliderLength) {
-        counter = 0;
-    }
+//     if(counter >= sliderLength) {
+//         counter = 0;
+//     }
 
-    slide[counter].classList.add('active');
-});
+//     slide[counter].classList.add('active');
+// });

@@ -87,9 +87,10 @@ section.slideshow figcaption {
 }
 
 
-.slideReader {
+slideReader {
+	display: block;
 	position: relative;
-	bottom: 14px;
+	bottom: 10px;
 	width: 8.4rem;
 	margin:0 auto;
 	background-color: white;
