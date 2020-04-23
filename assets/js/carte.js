@@ -2,14 +2,11 @@
 
 class Carte {
     constructor(domTarget)	{
+      window.carteInteractive.carte = this;
       const dom = document.createElement("div");
       dom.id = "mapid";
       domTarget.appendChild(dom);
       this.mymap = L.map('mapid').setView([config.lat, config.long], config.zoom);
-      carteInteractive.carte = this;
-      //ON AJOUute la requete
-
-
     }
 
     createMap(data){
@@ -23,6 +20,11 @@ class Carte {
       }).addTo(this.mymap);
 
       //boucle sur data
+    }
+
+    async initMap(dataSrc){
+      const data = await carteInteractive.dataManager.getMapPoints(dataSrc);
+      this.createMap(data);
     }
 
     markerOnClick(){
