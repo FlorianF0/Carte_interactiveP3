@@ -8,32 +8,7 @@ section.slideshow {
 	background-color: black;
 	border-radius:5px;
 	box-shadow: 3px 3px 3px rgba(100,100,100,.4);
-
 }
-
-/*section.slideshow:before {
-	left: -5px;
-	top: 167px;
-	width: 900px;
-	height: 20px;
-	background: #aaa;
-
-	border-radius: 140px / 2px;
-	box-shadow: 0 0 5px #aaa, 0 0 10px #888, 0 0 15px #666;
-
-}
-
-section.slideshow:after {
-	left: 8px;
-	top: 168px;
-	width: 255px;
-	height: 2px;
-	background: #666;
-	
-	border-radius: 125px / 1px;
-	box-shadow: 0 0 5px #444, 0 0 8px #333, 0 0 10px #666;
-
-}*/
 
 
 section.slideshow .container {
@@ -43,14 +18,12 @@ section.slideshow .container {
 	overflow: hidden;
 }
 
-section.slideshow .slider {
+section.slideshow slider {
 	position: absolute;
 	left: 0;
 	top: 0;
 	width: 600%;
 	height: 240px;
-	animation: slider 40s infinite;
-
 }
 
 section.slideshow figure {
@@ -59,6 +32,15 @@ section.slideshow figure {
 	padding:0;
 	margin: 0;
 	margin-right:-4px; 
+}
+
+
+section.slideshow figure.hidden {
+	display: none;
+}
+
+section.slideshow figure.show {
+	animation: slider 5s infinite;
 }
 
 section.slideshow figcaption {
@@ -78,14 +60,10 @@ section.slideshow figcaption {
 }
 
 @-moz-keyframes slider {
-	0%, 12%, 100% { left: 0 }
-	20%, 32%	  { left: -100% }
-	40%, 52%	  { left: -200% }
-	60%, 72%      { left: -300% } 
-	80%, 92%	  { left: -400% }
-	99.99%		  { left: -500% }
+	0%  	  { left: -100% }
+	10%, 90%  { left: 0% }
+	100%	  { left: 100% } 
 }
-
 
 slideReader {
 	display: block;
@@ -107,6 +85,8 @@ slideReader {
 	color: black;
 	font-size: 1.5rem;
 	padding: 5px;
+	border: none;
+	background-color: white;
 }
 
 
