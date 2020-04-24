@@ -1,5 +1,3 @@
-
-
 class Slider {
 	constructor(domTarget, domTarget2, name) {
 		this.domSlider	= document.createElement("slider");
@@ -37,27 +35,22 @@ class Slider {
 				<img src="images/img1_Paris.jpg">
 				<figcaption>Louer un vélo pour vous déplacer rapidement dans Paris !</figcaption>
 			</figure>
-
 			<figure id="figure1">
 				<img src="images/img3_velo_ConvertImage.jpg">
 				<figcaption>Regardez la station la plus proche de votre position sur la map. Cliquez sur la station, vous aurez son adresse, et le nombre de vélos disponibles.</figcaption>
 			</figure>
-
 			<figure id="figure2">
 				<img src="images/paris_electrique_3_ConvertImage.jpg">
 				<figcaption>Il ne vous reste plus qu'à réserver le vélo grâce au formulaire puis à aller le chercher dans les 20 minutes qui suivent. Si vous dépassez ce temps, il faudra refaire une réservation du vélo.</figcaption>
 			</figure>
-
 			<figure id="figure3">
 				<img src="images/paris_electrique_3_ConvertImage.jpg">
 				<figcaption>Maintenant vous pouvez profiter d'une belle balade sous un soleil radieux.</figcaption>
 			</figure>
-
 			<figure id="figure4">
 				<img src="images/paris_electrique_3_ConvertImage.jpg">
 				<figcaption>Pour terminer, déposez le vélo dans une station où des places sont disponibles.</figcaption>
 			</figure>
-
 			<figure id="figure5">
 				<img src="images/img1_Paris.jpg">
 				<figcaption>Louer un vélo pour vous déplacer rapidement dans Paris !</figcaption>
@@ -106,7 +99,6 @@ class Slider {
 	}
 
 	pause() {
-		// this.idFigure = 1;
 		document.getElementById(`figure${this.idFigure}`).style.animationPlayState = "running"; 
 		this.tempo = setTimeout(this.changeSlide, this.duree - this.ecoule, "+");
 		this.ecoule = null;
@@ -127,5 +119,3 @@ class Slider {
 	  this.playPauseBtn.innerHTML = '<i class="fa fa-pause" aria-hidden="true"></i>';
 	}
 }
-
-
