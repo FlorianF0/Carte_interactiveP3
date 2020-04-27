@@ -1,5 +1,4 @@
 var carteInteractive = {};
-// var slider = {};
 
 
 var config = {
@@ -16,4 +15,3 @@ new Slider(document.querySelector('.slideshow'), document.querySelector('.contai
 new Carte(document.getElementsByTagName("main")[0]);
 carteInteractive.carte.initMap(`${config.api}&apiKey=${config.tokenJCD}`);
 new Reservation(document.getElementsByTagName("main")[0]);
-fef
