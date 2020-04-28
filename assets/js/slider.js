@@ -24,7 +24,7 @@ class Slider {
 		
 
 		this.changeSlide();
-		window.carteInteractive[name] = this;
+		window.webBike[name] = this;
 
 
 	}
@@ -60,9 +60,9 @@ class Slider {
 
 	btnTemplate(){
 	    this.dom.innerHTML = `
-	      	<button class="arrowPrev"  onClick="carteInteractive.${this.name}.changeSlide('+')" > <i class="fa fa-arrow-left" aria-hidden="true">  </i></button>
-			<button class="playBtn" id="playPause"  onClick="carteInteractive.${this.name}.playPause()" >  		<i class="fa fa-pause" aria-hidden="true">       </i></button>
-			<button class="arrowNext"  onClick="carteInteractive.${this.name}.changeSlide('-')" > <i class="fa fa-arrow-right" aria-hidden="true"> </i></button>
+	      	<button class="arrowPrev"  onClick="webBike.${this.name}.changeSlide('+')" > <i class="fa fa-arrow-left" aria-hidden="true">  </i></button>
+			<button class="playBtn" id="playPause"  onClick="webBike.${this.name}.playPause()" >  		<i class="fa fa-pause" aria-hidden="true">       </i></button>
+			<button class="arrowNext"  onClick="webBike.${this.name}.changeSlide('-')" > <i class="fa fa-arrow-right" aria-hidden="true"> </i></button>
 	    `;
   	}
 

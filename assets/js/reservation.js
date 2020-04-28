@@ -1,7 +1,7 @@
 class Reservation{
   constructor(domTarget){
     this.dom = document.createElement("reservationForm");
-    carteInteractive.reservation = this;
+    webBike.reservation = this;
     this.places = 10;
     domTarget.appendChild(this.dom);
   }
@@ -32,7 +32,13 @@ class Reservation{
     return "";
   }
 
-  update(){
+  make(data){
+    console.log('data', data)
+    this.dom.innerHTML = data.title;
+    // this.mainTemplate();
+  }
+
+  update(data){
     this.mainTemplate();
   }
 }
