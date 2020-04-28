@@ -3,7 +3,7 @@ var carteInteractive = {};
 
 var config = {
   api      : "https://api.jcdecaux.com/vls/v1/stations?contract=Lyon",
-  leaflet  : "pk.eyJ1IjoicmFmYTE4NyIsImEiOiJjazBlejByNTUwazBqM290aTR6ZTl1NHZsIn0.uen14wB6LPlL_450lJOynA",
+  leaflet  : "pk.eyJ1IjoiZmxvcmlhbmYiLCJhIjoiY2s5am8yaW83MDBtdzNmdWh1aGR6ZHJzdyJ9.gIbTpGVfCx8TAaZpl6FT6w",
   tokenJCD : "7ace2945195aee91101f2aac7bc8bd926e097e9c",
   lat      : 45.756645,
   long     : 4.835673,
