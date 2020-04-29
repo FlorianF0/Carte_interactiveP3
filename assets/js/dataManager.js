@@ -9,19 +9,3 @@ class DataManager{
     return data;
   }
 }
-
-
-
-
-// var myHeaders = new Headers();
-// myHeaders.append('Accept', '*/*');
-// myHeaders.append('Authorization', 'Basic'+key);
-
-// const answer = fetch(src, {
-// 	mode : 'no-cors',
-// 	method : 'GET',
-// 	headers : myHeaders
-// })
-
-// console.log('answer', answer);
-// return answer;

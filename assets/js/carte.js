@@ -18,11 +18,15 @@ class Carte {
       }).addTo(this.mymap);
     }
 
+
     async initMap(dataSrc){
       const data = await webBike.dataManager.getMapPoints(dataSrc);
       console.log(data);
 
-      for(let i=0; i<data.length; i++){
+      // var markersCluster = new L.MarkerClusterGroup();
+
+
+      for(let i = 0; i < data.length; i++){
         L.marker(
           [data[i].position.lat, data[i].position.lng], 
           {
@@ -30,14 +34,17 @@ class Carte {
             qtyAvailable : data[i].available_bikes,
             qtyStation   : data[i].bike_stands,
             title        : this.getTitle(data[i].name),
+            address      : data[i].address,
           }
         ).addTo(this.mymap)
          .on('click', function(event) {
             const data = this.options;
             delete data.icon;
-            window.webBike.reservation.make(this.options);
+            window.webBike.reservation.mainTemplate(this.options);
         });
       }
+      // this.mymap.addLayer(markersCluster);
+
       this.createMap(data);
     }
 
@@ -51,9 +58,9 @@ class Carte {
     }
 
     getIcon(qty){
-      let iconUrl = "images/icons/icon-map-green.png";
-      if (qty <= config.warningIconQty) iconUrl = "images/icons/icon-map-orange.png";
-      if (qty===0)                      iconUrl = "images/icons/icon-map-red.png";
+      let iconUrl = "images/icons/map-icon-greenTr.png";
+      if (qty <= config.warningIconQty) iconUrl = "images/icons/map-icon-orangeTr.png";
+      if (qty===0)                      iconUrl = "images/icons/map-icon-redTr.png";
       return L.icon({
         iconUrl: iconUrl,
         iconSize:   [38, 38],
@@ -65,15 +72,3 @@ class Carte {
       });
     }
 }
-
-
-/*
-
-this.markers = {};
-
-this.markers["marker"+id] = L.marker([51.5, -0.09], {icon: greenIcon})
-    .addTo(map)
-    .on('click', markerOnClick);
-
-
- */

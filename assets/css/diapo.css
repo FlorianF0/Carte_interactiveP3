@@ -16,6 +16,7 @@ section.slideshow .container {
 	width: 960px;
 	height: 240px;
 	overflow: hidden;
+	margin: 0 auto;
 }
 
 section.slideshow slider {
