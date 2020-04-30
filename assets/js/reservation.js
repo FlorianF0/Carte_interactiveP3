@@ -1,6 +1,7 @@
 class Reservation{
   constructor(domTarget){
     this.dom = document.createElement("reservationForm");
+    
     webBike.reservation = this;
     domTarget.appendChild(this.dom);
     this.waitTemplate();
@@ -10,28 +11,44 @@ class Reservation{
     this.dom.innerHTML = `<p class="waitText"> Cliquez sur un icône pour accéder aux informations de la station.</p>`
   }
 
-
-
   mainTemplate(data){
     // console.log('data', data)
 
     this.dom.innerHTML = `
       <h2>Détails de la station</h2>
-      <p><strong>Nom de la station :</strong> ${data.title} </p>
-      <p><strong>Position :</strong> ${this.textForm(data.address)}</p>
+      <div class="infoStation">
+        <p><strong>Nom de la station :</strong> ${data.title} </p>
+        <p><strong>Position :</strong> ${this.textForm(data.address)}</p>
+        <p><strong>Status :</strong> ${data.status}</p>
 
-      <ul>
-        <li> ${data.qtyAvailable} vélos disponibles</li>
-        <li> ${data.qtyStation} place${this.pluriel(data.qtyStation)} restante${this.pluriel(data.qtyStation)}</li>
-      </ul>
+        <ul>
+          <li> ${data.qtyAvailable} vélos disponibles</li>
+          <li> ${data.qtyStation} place${this.pluriel(data.qtyStation)} restante${this.pluriel(data.qtyStation)}</li>
+        </ul>
+      </div>
 
-      <label>Nom :</label>
-      <input id="nom" type="text" name="Nom"><br/>
+      <div class="inputForm"> 
+        <label>Nom :</label>
+        <input id="nom" type="text" name="Nom"><br/>
 
-      <label>Prénom :</label>
-      <input type="text" name="Prénom"><br/>
+        <label>Prénom :</label>
+        <input type="text" name="Prénom"><br/>
+        
+        <div class="reservation">
+          <input id="btnReservation" type="button" name="Réservation" value="Réservation" onClick=" webBike.reservation.test()">
+        </div>
+      </div>
 
-      <input id="btnReservation" type="button" name="Réservation" value="Réservation">
+      <p class="test"></p>
+    `;
+  }
+
+  canvaTemplate() {
+    this.domReservation.innerHTML = `
+      <p>Signer pour finir la réservation</p>
+      <canva></canva>
+
+      <input id="btnReservation" type="button" name="Réservation" value="Finir la réservation" onClick="">
     `;
   }
 
@@ -44,16 +61,19 @@ class Reservation{
     return str.toLowerCase();
   }
 
-  makeName(data){
-    this.dom.innerHTML = data.title;
-
-  }
-
-  // positon(data){
-  //   if( this.textForm(data) == "") { this.textForm(data) = "Inconnue" }
-  // }
-
   update(data){
     this.mainTemplate();
   }
+
+  showCanva() {
+    this.domReservation = document.getElementsByClassName("reservation");
+    this.canvaTemplate();
+    return false;
+  }
+
+  test(){
+    this.domTest = document.getElementsByClassName("test");
+    this.domTest.innerHTML = "testssssssssssssssssssss";
+  }
+
 }

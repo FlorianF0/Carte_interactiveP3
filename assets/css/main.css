@@ -19,8 +19,7 @@ reservationForm {
 	width: 16rem;
 	border: 3px solid grey;
 	border-radius: 20px;
-/*	margin-right: 8rem;
-*/	margin-left: 5rem;
+	margin-left: 5rem;
 	padding: 2rem;
 	padding-top: 0;
 	font-family: Georgia;
@@ -37,6 +36,20 @@ reservationForm h2 {
 reservationForm strong {
 	font-size: 1.1rem;
 }
+
+reservationForm .infoStation {
+	height: 12rem;
+}
+
+.infoStation p{
+	height: 2.5rem;
+}
+
+
+reservationForm .inputForm {
+	position: static;
+}
+
 
 reservationForm input:nth-of-type(1){
 	margin-bottom: 4px;

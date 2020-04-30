@@ -1,22 +1,16 @@
 class Slider {
 	constructor(domTarget, domTarget2, name) {
-		this.domSlider	= document.createElement("slider");
-		this.dom				= document.createElement("slideReader");
+		this.domSlider		= document.createElement("slider");
+		this.dom			= document.createElement("slideReader");
 		this.duree			= 5000;
 		this.ecoule			= null;
 		this.idFigure		= -1;
-		this.name				= name;
+		this.name			= name;
 		this.start			= Date.now();
 		this.tempo;
 		
 		domTarget2.appendChild(this.domSlider);
 		domTarget.appendChild(this.dom);
-
-		// for(let i = 0; i < this.figures.lenght; i++) {
-		// 	this.figure.id = this.figures[i] + i;
-		// }
-
-		// console.log("figures")
 
 		
 		this.sliderTemplate();

@@ -35,6 +35,7 @@ class Carte {
             qtyStation   : data[i].bike_stands,
             title        : this.getTitle(data[i].name),
             address      : data[i].address,
+            status       : data[i].status,
           }
         ).addTo(this.mymap)
          .on('click', function(event) {
