@@ -1,7 +1,7 @@
 class Reservation{
   constructor(domTarget){
     this.dom = document.createElement("reservationForm");
-    
+
     webBike.reservation = this;
     domTarget.appendChild(this.dom);
     this.waitTemplate();
@@ -50,6 +50,7 @@ class Reservation{
 
       <input id="btnReservation" type="button" name="Réservation" value="Finir la réservation" onClick="">
     `;
+    
   }
 
   pluriel(qty){
