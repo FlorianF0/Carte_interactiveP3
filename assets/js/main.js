@@ -2,7 +2,7 @@ var webBike = {};
 
 
 var config = {
-  api            : "https://api.jcdecaux.com/vls/v1/stations?contract =Lyon",
+  api            : "https://api.jcdecaux.com/vls/v1/stations?contract=Lyon",
   leaflet        : "pk.eyJ1IjoiZmxvcmlhbmYiLCJhIjoiY2s5am8yaW83MDBtdzNmdWh1aGR6ZHJzdyJ9.gIbTpGVfCx8TAaZpl6FT6w",
   tokenJCD       : "7ace2945195aee91101f2aac7bc8bd926e097e9c",
   lat            : 45.756645,

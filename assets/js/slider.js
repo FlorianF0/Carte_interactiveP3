@@ -1,5 +1,6 @@
 class Slider {
 	constructor(domTarget, domTarget2, name) {
+		window.webBike[name] = this;
 		this.domSlider		= document.createElement("slider");
 		this.dom			= document.createElement("slideReader");
 		this.duree			= 5000;
@@ -18,7 +19,6 @@ class Slider {
 		
 
 		this.changeSlide();
-		window.webBike[name] = this;
 
 
 	}

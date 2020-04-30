@@ -1,8 +1,8 @@
 class Reservation{
   constructor(domTarget){
+    webBike.reservation = this;
     this.dom = document.createElement("reservationForm");
 
-    webBike.reservation = this;
     domTarget.appendChild(this.dom);
     this.waitTemplate();
   }
@@ -35,7 +35,7 @@ class Reservation{
         <input type="text" name="Prénom"><br/>
         
         <div class="reservation">
-          <input id="btnReservation" type="button" name="Réservation" value="Réservation" onClick=" webBike.reservation.test()">
+          <input id="btnReservation" type="button" name="Réservation" value="Réservation" onClick=" webBike.reservation.showCanva()">
         </div>
       </div>
 
@@ -71,10 +71,4 @@ class Reservation{
     this.canvaTemplate();
     return false;
   }
-
-  test(){
-    this.domTest = document.getElementsByClassName("test");
-    this.domTest.innerHTML = "testssssssssssssssssssss";
-  }
-
 }
