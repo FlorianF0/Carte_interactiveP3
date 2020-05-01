@@ -44,7 +44,8 @@ class Reservation{
   }
 
   canvaTemplate() {
-    this.domReservation.innerHTML = `
+    console.log(this)
+    this.domReservation[0].innerHTML = `
       <p>Signer pour finir la réservation</p>
       <canva></canva>
 
