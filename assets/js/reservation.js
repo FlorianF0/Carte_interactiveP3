@@ -48,8 +48,6 @@ class Reservation{
       <p>Signer pour finir la réservation</p>
       <input id="btnReservation" type="button" name="Réservation" value="Finir la réservation" onClick="">
     `;
-    
-    console.log(this.domReservation.innerHTML)
   }
 
   pluriel(qty){
@@ -92,17 +90,11 @@ class Reservation{
     else {
       this.domMsgErreur.remove();
 
-     this.domReservation.innerHTML = `
-      <p>Signer pour finir la réservation</p>
-      <input id="btnReservation" type="button" name="Réservation" value="Finir la réservation" onClick="">
-    `;
+      this.canvaTemplate();
 
       new Canva(document.querySelector('.reservation'), document.querySelector('.reservation > p'));
       this.domBtnReserv = document.getElementById('btnReservation');
       this.domBtnReserv.style.margin = "1rem";
-
-      // return true;
-
     }
   }
 }
