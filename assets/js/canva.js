@@ -1,10 +1,9 @@
 class Canva {
-	constructor(domTarget) {
+	constructor(domTarget, domSecond) {
 		webBike.canva = this;
 		this.dom = document.createElement('canva');
-		this.domP = document.querySelector('.reservation > p');
 
-		domTarget.insertBefore(this.dom, this.domP);
+		domTarget.insertBefore(this.dom, domSecond);
 		console.log(this.dom)
 
     this.isDrawing=false;

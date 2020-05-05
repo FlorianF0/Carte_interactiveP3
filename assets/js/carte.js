@@ -29,11 +29,14 @@ class Carte {
       console.log(data);
 
       var markersCluster = new L.MarkerClusterGroup({
-        maxClusterRadius: 120,
+        maxClusterRadius: 70,
         iconCreateFunction: function (cluster) {
           const markers = cluster.getAllChildMarkers();
           const n = markers.length;
-          return L.divIcon({ html: n, className: 'mycluster', iconSize: L.point(40, 40) });
+          return L.divIcon({ html: n, 
+                             className: 'mycluster', 
+                             iconSize: L.point(40, 40) 
+                            });
         },
         //Disable all of the defaults:
         spiderfyOnMaxZoom: false, showCoverageOnHover: false, zoomToBoundsOnClick: false
@@ -79,7 +82,7 @@ class Carte {
       if (qty===0)                      iconUrl = "images/icons/map-icon-redTr.png";
       return L.icon({
         iconUrl: iconUrl,
-        iconSize:   [38, 38],
+        iconSize:   [28, 38],
         iconAnchor: [19, 38],
         // popupAnchor: [-3, -76],
         // shadowUrl: 'my-icon-shadow.png',
