@@ -38,8 +38,6 @@ class Reservation{
           <input id="btnReservation" type="button" name="Réservation" value="Réservation" onClick=" webBike.reservation.showCanva()">
         </div>
       </div>
-
-      <p class="test"></p>
     `;
   }
 
@@ -47,8 +45,6 @@ class Reservation{
     console.log(this)
     this.domReservation[0].innerHTML = `
       <p>Signer pour finir la réservation</p>
-      <canva></canva>
-
       <input id="btnReservation" type="button" name="Réservation" value="Finir la réservation" onClick="">
     `;
     
@@ -70,6 +66,11 @@ class Reservation{
   showCanva() {
     this.domReservation = document.getElementsByClassName("reservation");
     this.canvaTemplate();
+
+    new Canva(document.querySelector('.reservation'));
+    this.domBtnReserv = document.getElementById('btnReservation');
+    this.domBtnReserv.style.margin = "1rem"
+
     return false;
   }
 }
