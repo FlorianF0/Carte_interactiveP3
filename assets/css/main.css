@@ -97,12 +97,12 @@ reservationForm #btnReservation {
 	font-size: 0.8rem;
 }
 
-.reservation canva {
+.reservation canvas {
 	display: block;
 	margin: auto;
 	margin-top: 1rem;
-	width: 90%;
-	height: 5rem;
+	/*width: 225px;
+	height: 80px;*/
 	border: 1px solid black;
 	background-color: white;
 }

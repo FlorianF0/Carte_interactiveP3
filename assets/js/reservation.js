@@ -31,10 +31,10 @@ class Reservation{
 
       <div class="inputForm"> 
         <label>Nom :</label>
-        <input id="nom" type="text" name="Nom"><br/>
+        <input id="nom" type="text" name="Nom" maxlength="20"><br/>
 
         <label>Prénom :</label>
-        <input id="prenom" type="text" name="Prénom"><br/>
+        <input id="prenom" type="text" name="Prénom" maxlength="20"><br/>
         
         <div class="reservation">
           <input id="btnReservation" type="button" name="Réservation" value="Réservation" onClick=" webBike.reservation.showCanva()">
