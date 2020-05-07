@@ -8,7 +8,7 @@ class Canva {
 
 
 		domTarget.insertBefore(this.dom, domSecond);
-		console.log(this.dom)
+		// console.log(this.dom)
 		// this.domCanva = document.getElementById('canva');
 
 	    this.isDrawing = false;
@@ -32,15 +32,19 @@ class Canva {
 	}
 
 	// getBoundingClientRect(){
-	// this.rect  = this.dom.getBoundingClientRect();
+	// 	this.domCanva = document.getElementById('canvas');
+	// 	this.rect  = this.domCanva.getBoundingClientRect();
 
 	// }
 
 	start(event){
-		console.log("start",event);
+		// console.log("start",event);
+
+		this.domCanva = document.getElementById('canvas');
+	    this.context = this.domCanva.getContext('2d');
+		this.rect 	 = this.domCanva.getBoundingClientRect();
 
 		this.isDrawing = true;
-		console.log('isDrawing', this.isDrawing)
 		this.prevPoint = {
 		  x : event.clientX - this.rect.left,
 		  y : event.clientY - this.rect.top	
@@ -48,25 +52,34 @@ class Canva {
 	}
 
 	draw(event){
+		// console.log("draw",event)
+
 		if (this.isDrawing === true) {
 			this.domCanva = document.getElementById('canvas');
+			this.context = this.domCanva.getContext('2d');
 			this.rect 	 = this.domCanva.getBoundingClientRect();
-			console.log("rect", this.rect);
-			this.drawLine(this.context, this.x, this.y, event.clientX - this.rect.left, event.clientY - this.rect.top);
+
+			console.log("eventClientX", this.prevPoint.x)
+
+			window.webBike.canva.drawLine(this.context, this.prevPoint.x, this.prevPoint.y, event.clientX - this.rect.left, event.clientY - this.rect.top);
 			this.prevPoint = {
 				x : event.clientX - this.rect.left,
 		  		y : event.clientY - this.rect.top
 		  	};	
 
 		};
-		// console.log("draw",event)
 	}
 
 	stop(event){
 		// console.log("stop",event)
 
+		
 		if (this.isDrawing === true) {
-			this.drawLine(this.context, this.x, this.y, event.clientX - this.rect.left, event.clientY - this.rect.top);
+			this.domCanva = document.getElementById('canvas');
+		    this.context = this.domCanva.getContext('2d');
+			this.rect 	 = this.domCanva.getBoundingClientRect();
+
+			window.webBike.canva.drawLine(this.context, this.prevPoint.x, this.prevPoint.y, event.clientX - this.rect.left, event.clientY - this.rect.top);
 			this.prevPoint = {
 				x : 0,
 				y : 0	
