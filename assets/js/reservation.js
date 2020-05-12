@@ -13,7 +13,14 @@ class Reservation{
   }
 
   mainTemplate(data){
-    // console.log('data', data)
+    console.log('data', data)
+    const nom    = window.webBike.dataManager.getLocal("nom");
+    const prenom = window.webBike.dataManager.getLocal("prenom");
+    this.station = data.title;
+
+    if (data.title === window.webBike.dataManager.getSession("station")){
+      data.qtyAvailable--;
+    }
 
     this.dom.innerHTML = `
       <h2>Détails de la station</h2>
@@ -31,13 +38,13 @@ class Reservation{
 
       <div class="inputForm"> 
         <label>Nom :</label>
-        <input id="nom" type="text" name="Nom" maxlength="20"><br/>
+        <input id="nom" type="text" name="Nom" maxlength="20" placeholder="saisissez votre nom" value="${nom}"><br/>
 
         <label>Prénom :</label>
-        <input id="prenom" type="text" name="Prénom" maxlength="20"><br/>
+        <input id="prenom" type="text" name="Prénom" maxlength="20" placeholder="saisissez votre prénom" value="${prenom}"><br/>
         
         <div class="reservation">
-          <input id="btnReservation" type="button" name="Réservation" value="Réservation" onClick=" webBike.reservation.showCanva()">
+          <input id="btnReservation" type="button" name="Réservation" value="Réservation" onClick="webBike.reservation.showCanva()">
         </div>
       </div>
     `;
@@ -46,7 +53,7 @@ class Reservation{
   canvaTemplate() {
     this.domReservation.innerHTML = `
       <p>Signer pour finir la réservation</p>
-      <input id="btnReservation" type="button" name="Réservation" value="Finir la réservation" onClick="">
+      <input id="btnReservation" type="button" name="Réservation" value="Finir la réservation" onClick="webBike.reservation.order()">
     `;
   }
 
@@ -96,5 +103,12 @@ class Reservation{
       this.domBtnReserv = document.getElementById('btnReservation');
       this.domBtnReserv.style.margin = "1rem";
     }
+  }
+
+  order(){
+    window.webBike.dataManager.setLocal("nom", this.domInputName.value);
+    window.webBike.dataManager.setLocal("prenom", this.domInputFirstName.value);
+    window.webBike.dataManager.setSession("orderTime", Date.now());
+    window.webBike.dataManager.setSession("station", this.station);
   }
 }

@@ -3,29 +3,30 @@ class Canva {
 		webBike.canva = this;
 		this.dom = document.createElement('canvas');
 		this.dom.id = "canvas";
-		this.dom.style.height = "80px";
-		this.dom.style.width = "225px";
+		this.dom.height = "80";
+		this.dom.width = "225";
 
 
 		domTarget.insertBefore(this.dom, domSecond);
 		// console.log(this.dom)
 		// this.domCanva = document.getElementById('canva');
 
-	    this.isDrawing = false;
+    this.isDrawing = false;
 	    this.prevPoint = {
 		  x : 0,
 		  y : 0	
 		};
 		// console.log('prevPoint', this.prevPoint)
 
-	    this.context = this.dom.getContext('2d');
-	    this.rect 	 = this.dom.getBoundingClientRect();
+    this.context = this.dom.getContext('2d');
+    this.rect 	 = this.dom.getBoundingClientRect();
 		// console.log("rect", this.rect);
 		// console.log('context', this.context)
 
-	    this.dom.onmousedown = this.start;
-	    this.dom.onmousemove = this.draw;
-	    this.dom.onmouseup   = this.stop;
+    this.dom.onmousedown = this.start.bind(this);
+    this.dom.onmousemove = this.draw.bind(this);
+    this.dom.onmouseup   = this.stop.bind(this);
+    this.dom.onmouseup   = this.stop.bind(this);
 
     //évènements mobiles : https://developer.mozilla.org/fr/docs/Web/Guide/DOM/Events/Touch_events
     //dessiner dans le canvas : https://developer.mozilla.org/fr/docs/Web/API/Element/mousedown_event
@@ -38,11 +39,7 @@ class Canva {
 	// }
 
 	start(event){
-		// console.log("start",event);
-
-		this.domCanva = document.getElementById('canvas');
-	    this.context = this.domCanva.getContext('2d');
-		this.rect 	 = this.domCanva.getBoundingClientRect();
+		// console.log("start",event, this);
 
 		this.isDrawing = true;
 		this.prevPoint = {
@@ -55,9 +52,6 @@ class Canva {
 		// console.log("draw",event)
 
 		if (this.isDrawing === true) {
-			this.domCanva = document.getElementById('canvas');
-			this.context = this.domCanva.getContext('2d');
-			this.rect 	 = this.domCanva.getBoundingClientRect();
 
 			console.log("eventClientX", this.prevPoint.x)
 
@@ -75,10 +69,6 @@ class Canva {
 
 		
 		if (this.isDrawing === true) {
-			this.domCanva = document.getElementById('canvas');
-		    this.context = this.domCanva.getContext('2d');
-			this.rect 	 = this.domCanva.getBoundingClientRect();
-
 			window.webBike.canva.drawLine(this.context, this.prevPoint.x, this.prevPoint.y, event.clientX - this.rect.left, event.clientY - this.rect.top);
 			this.prevPoint = {
 				x : 0,

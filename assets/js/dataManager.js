@@ -1,5 +1,6 @@
 class DataManager{
-  constructor(target){
+  constructor(target, key){
+    this.idKey = key+"_";
     window[target].dataManager = this;
   }
 
@@ -7,5 +8,25 @@ class DataManager{
     const response = await fetch(src)
     let data = await response.json();
     return data;
+  }
+
+  getLocal(value){
+    const result = localStorage.getItem(this.idKey+value);
+    if (result === null) return "";
+    return result;
+  }
+
+  setLocal(key, value){
+    localStorage.setItem(this.idKey+key,value);
+  }
+
+  getSession(value){
+    const result = sessionStorage.getItem(this.idKey+value);
+    if (result === null) return "";
+    return result;
+  }
+
+  setSession(key, value){
+    sessionStorage.setItem(this.idKey+key,value);
   }
 }
