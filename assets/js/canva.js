@@ -9,7 +9,6 @@ class Canva {
 
 		domTarget.insertBefore(this.dom, domSecond);
 		// console.log(this.dom)
-		// this.domCanva = document.getElementById('canva');
 
 	    this.isDrawing = false;
 	    this.prevPoint = {
@@ -31,15 +30,16 @@ class Canva {
     //dessiner dans le canvas : https://developer.mozilla.org/fr/docs/Web/API/Element/mousedown_event
 	}
 
-	// getBoundingClientRect(){
-	// 	this.domCanva = document.getElementById('canvas');
-	// 	this.rect  = this.domCanva.getBoundingClientRect();
+	getInfo(){
+		this.domCanva = document.getElementById('canvas');
+	    this.context = this.domCanva.getContext('2d');
+		this.rect  = this.domCanva.getBoundingClientRect();
 
-	// }
+	}
 
 	start(event){
 		// console.log("start",event);
-
+		// window.webBike.canva.getInfo();
 		this.domCanva = document.getElementById('canvas');
 	    this.context = this.domCanva.getContext('2d');
 		this.rect 	 = this.domCanva.getBoundingClientRect();
@@ -59,7 +59,9 @@ class Canva {
 			this.context = this.domCanva.getContext('2d');
 			this.rect 	 = this.domCanva.getBoundingClientRect();
 
-			console.log("eventClientX", this.prevPoint.x)
+			// window.webBike.canva.getInfo();
+
+			console.log("eventClientX", this.rect)
 
 			window.webBike.canva.drawLine(this.context, this.prevPoint.x, this.prevPoint.y, event.clientX - this.rect.left, event.clientY - this.rect.top);
 			this.prevPoint = {
@@ -78,6 +80,8 @@ class Canva {
 			this.domCanva = document.getElementById('canvas');
 		    this.context = this.domCanva.getContext('2d');
 			this.rect 	 = this.domCanva.getBoundingClientRect();
+
+			// window.webBike.canva.getInfo();
 
 			window.webBike.canva.drawLine(this.context, this.prevPoint.x, this.prevPoint.y, event.clientX - this.rect.left, event.clientY - this.rect.top);
 			this.prevPoint = {
