@@ -39,16 +39,10 @@ class Canva {
 	}
 
 	start(event){
-<<<<<<< HEAD
 		// console.log("start",event);
 		// window.webBike.canva.getInfo();
-		this.domCanva = document.getElementById('canvas');
-	    this.context = this.domCanva.getContext('2d');
-		this.rect 	 = this.domCanva.getBoundingClientRect();
-=======
-		// console.log("start",event, this);
->>>>>>> dev
 
+		// console.log("start",event, this);
 		this.isDrawing = true;
 		this.prevPoint = {
 		  x : event.clientX - this.rect.left,
@@ -79,15 +73,6 @@ class Canva {
 
 		
 		if (this.isDrawing === true) {
-<<<<<<< HEAD
-			this.domCanva = document.getElementById('canvas');
-		    this.context = this.domCanva.getContext('2d');
-			this.rect 	 = this.domCanva.getBoundingClientRect();
-
-			// window.webBike.canva.getInfo();
-
-=======
->>>>>>> dev
 			window.webBike.canva.drawLine(this.context, this.prevPoint.x, this.prevPoint.y, event.clientX - this.rect.left, event.clientY - this.rect.top);
 			this.prevPoint = {
 				x : 0,

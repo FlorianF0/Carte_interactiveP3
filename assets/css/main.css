@@ -101,8 +101,6 @@ reservationForm #btnReservation {
 	display: block;
 	margin: auto;
 	margin-top: 1rem;
-	/*width: 225px;
-	height: 80px;*/
 	border: 1px solid black;
 	background-color: white;
 }
