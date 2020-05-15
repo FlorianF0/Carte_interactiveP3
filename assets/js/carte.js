@@ -59,7 +59,14 @@ class Carte {
         marker.on('click', function(event) {
             const data = this.options;
             delete data.icon;
-            window.webBike.reservation.mainTemplate(this.options);
+
+            if ( data.status === "CLOSED" || data.qtyAvailable === 0) {
+              window.webBike.reservation.noReservationTemplate(this.options);
+            }
+
+            else {
+              window.webBike.reservation.mainTemplate(this.options);
+            }
         });
         marker.bindPopup(title);
         markersCluster.addLayer(marker);

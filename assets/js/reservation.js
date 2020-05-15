@@ -13,10 +13,11 @@ class Reservation{
   }
 
   mainTemplate(data){
-    console.log('data', data)
+    // console.log('data', data)
     const nom    = window.webBike.dataManager.getLocal("nom");
     const prenom = window.webBike.dataManager.getLocal("prenom");
     this.station = data.title;
+    this.qtyAvailable = data.qtyAvailable;
 
     if (data.title === window.webBike.dataManager.getSession("station")){
       data.qtyAvailable--;
@@ -38,14 +39,36 @@ class Reservation{
 
       <div class="inputForm"> 
         <label>Nom :</label>
-        <input id="nom" type="text" name="Nom" maxlength="20" placeholder="saisissez votre nom" value="${nom}"><br/>
+        <input id="nom" type="text" name="Nom" maxlength="20" placeholder="Saisissez votre nom" value="${nom}"><br/>
 
         <label>Prénom :</label>
-        <input id="prenom" type="text" name="Prénom" maxlength="20" placeholder="saisissez votre prénom" value="${prenom}"><br/>
+        <input id="prenom" type="text" name="Prénom" maxlength="20" placeholder="Saisissez votre prénom" value="${prenom}"><br/>
         
         <div class="reservation">
           <input id="btnReservation" type="button" name="Réservation" value="Réservation" onClick="webBike.reservation.showCanva()">
         </div>
+      </div>
+    `;
+  }
+
+  noReservationTemplate(data) {
+    this.dom.innerHTML = `
+      <h2>Détails de la station</h2>
+
+      <div class="infoStation">
+        <p><strong>Nom de la station :</strong> ${data.title} </p>
+        <p><strong>Position :</strong> ${this.checkAddress(data.address)}</p>
+        <p><strong>Statut :</strong> ${data.status}</p>
+
+        <ul>
+          <li> ${data.qtyAvailable} vélos disponibles</li>
+          <li> ${data.qtyStation} place${this.pluriel(data.qtyStation)} restante${this.pluriel(data.qtyStation)}</li>
+        </ul>
+      </div>
+
+      <div class="noAvaibleStation">
+        <p>SORRY</p>
+        <p>Station fermé ou aucun vélo disponible</p>
       </div>
     `;
   }
@@ -110,5 +133,33 @@ class Reservation{
     window.webBike.dataManager.setLocal("prenom", this.domInputFirstName.value);
     window.webBike.dataManager.setSession("orderTime", Date.now());
     window.webBike.dataManager.setSession("station", this.station);
+
+    this.btnTimer();
+    
+  }
+
+  btnTimer() {
+    this.domTimer = document.getElementsByTagName('timer')[0];
+
+    if (this.domTimer) {
+      clearInterval(webBike.timer.startTimer);
+      this.domTimer.remove();
+
+      new Timer(document.getElementsByTagName('main')[0],
+                                              this.station, 
+                                              this.domInputName.value, 
+                                              this.domInputFirstName.value, 
+                                              this.qtyAvailable
+                                             );
+    }
+
+    else {
+      new Timer(document.getElementsByTagName('main')[0],
+                                              this.station, 
+                                              this.domInputName.value, 
+                                              this.domInputFirstName.value, 
+                                              this.qtyAvailable
+                                             );
+    }
   }
 }

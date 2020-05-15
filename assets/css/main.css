@@ -6,6 +6,7 @@ body {
 main {
 	margin-top: 5rem;
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: center;
 }
 
@@ -30,7 +31,9 @@ iframe {
 
 reservationForm {
 	background-color: rgba(255,255,255,.6);
-	width: 16rem;
+	width: 17rem;
+	min-width: 17rem;
+	max-height: 30rem;
 	border: 3px solid grey;
 	border-radius: 20px;
 	margin-left: 5rem;
@@ -68,6 +71,17 @@ reservationForm .inputForm {
 	position: static;
 }
 
+reservationForm .noAvaibleStation {
+	text-align: center;
+	border-top: 1px solid black;
+}
+
+reservationForm .noAvaibleStation p:nth-of-type(1){
+	font-size: 2rem;
+	font-family: system-ui;
+	font-style: italic;
+}
+
 
 reservationForm input:nth-of-type(1){
 	margin-bottom: 4px;
@@ -75,7 +89,11 @@ reservationForm input:nth-of-type(1){
 }
 
 reservationForm #nom {
-	margin-left: 21px;
+	margin-left: 26px;
+}
+
+reservationForm #prenom {
+	margin-left: 5px;
 }
 
 reservationForm #btnReservation {
@@ -114,5 +132,17 @@ msgErreur {
 	padding: 3px;
 	border-radius: 21px;
 	background-color: rgba(230, 53, 53, 0.7);
+}
+
+timer {
+	display: block;
+	text-align: center;
+	width: 90%;
+	background-color: rgba(255,255,255,.6);
+	border: 3px solid grey;
+	border-radius: 20px;
+	margin-top: 3rem;
+	padding: 15px;
+	font-size: 1.5rem;
 }
 

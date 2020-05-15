@@ -6,7 +6,7 @@ var config = {
   lat            : 45.756645,
   leaflet        : "pk.eyJ1IjoiZmxvcmlhbmYiLCJhIjoiY2s5am8yaW83MDBtdzNmdWh1aGR6ZHJzdyJ9.gIbTpGVfCx8TAaZpl6FT6w",
   long           : 4.835673,
-  timer          : 20*60*1000,
+  timer          : 20*60,
   tokenJCD       : "7ace2945195aee91101f2aac7bc8bd926e097e9c",
   warningIconQty : 5,
   zoom           : 13,

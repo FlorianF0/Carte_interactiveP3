@@ -8,41 +8,27 @@ class Canva {
 
 
 		domTarget.insertBefore(this.dom, domSecond);
-		// console.log(this.dom)
 
     this.isDrawing = false;
 	    this.prevPoint = {
 		  x : 0,
 		  y : 0	
 		};
-		// console.log('prevPoint', this.prevPoint)
 
     this.context = this.dom.getContext('2d');
-    this.rect 	 = this.dom.getBoundingClientRect();
-		// console.log("rect", this.rect);
-		// console.log('context', this.context)
 
     this.dom.onmousedown = this.start.bind(this);
     this.dom.onmousemove = this.draw.bind(this);
-    this.dom.onmouseup   = this.stop.bind(this);
     this.dom.onmouseup   = this.stop.bind(this);
 
     //évènements mobiles : https://developer.mozilla.org/fr/docs/Web/Guide/DOM/Events/Touch_events
     //dessiner dans le canvas : https://developer.mozilla.org/fr/docs/Web/API/Element/mousedown_event
 	}
 
-	getInfo(){
-		this.domCanva = document.getElementById('canvas');
-	    this.context = this.domCanva.getContext('2d');
-		this.rect  = this.domCanva.getBoundingClientRect();
-
-	}
-
 	start(event){
-		// console.log("start",event);
-		// window.webBike.canva.getInfo();
-
 		// console.log("start",event, this);
+	    this.rect 	 = this.dom.getBoundingClientRect();
+
 		this.isDrawing = true;
 		this.prevPoint = {
 		  x : event.clientX - this.rect.left,
@@ -54,25 +40,22 @@ class Canva {
 		// console.log("draw",event)
 
 		if (this.isDrawing === true) {
-
-			// window.webBike.canva.getInfo();
-
-			console.log("eventClientX", this.rect)
+			this.rect 	 = this.dom.getBoundingClientRect();
 
 			window.webBike.canva.drawLine(this.context, this.prevPoint.x, this.prevPoint.y, event.clientX - this.rect.left, event.clientY - this.rect.top);
 			this.prevPoint = {
 				x : event.clientX - this.rect.left,
 		  		y : event.clientY - this.rect.top
 		  	};	
-
 		};
 	}
 
 	stop(event){
 		// console.log("stop",event)
-
 		
 		if (this.isDrawing === true) {
+		    this.rect 	 = this.dom.getBoundingClientRect();
+
 			window.webBike.canva.drawLine(this.context, this.prevPoint.x, this.prevPoint.y, event.clientX - this.rect.left, event.clientY - this.rect.top);
 			this.prevPoint = {
 				x : 0,

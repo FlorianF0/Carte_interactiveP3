@@ -1,4 +1,5 @@
 #mapid {
   height: 70vh;
+  max-height: 30rem;
   width: 580px;
 }
