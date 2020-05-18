@@ -20,11 +20,11 @@ class Timer {
 		this.t(config.timer, document.getElementsByTagName("compteur")[0]);
 	}
 
-	t(duree, domCompteur) {
+	t(duree, dom) {
 		var counter = duree;
 
 		this.startTimer = setInterval(function() {
-			this.domCompteur = domCompteur;
+			this.domCompteur = dom;
 			this.domCompteur.innerHTML = counter;
 			counter--;
 
