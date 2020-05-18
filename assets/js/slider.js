@@ -79,12 +79,6 @@ class Slider {
 		this.tempo = setTimeout(this.changeSlide.bind(this), this.duree, "+");
 	}
 
-	pause() {
-		document.getElementById(`figure${this.idFigure}`).style.animationPlayState = "running"; 
-		this.tempo = setTimeout(this.changeSlide, this.duree - this.ecoule, "+");
-		this.ecoule = null;
-	}
-
 	playPause(){
 		if (this.playPauseBtn === undefined) this.playPauseBtn = document.getElementById("playPause");
 
@@ -92,7 +86,7 @@ class Slider {
 		    clearTimeout(this.tempo);
 
 		    document.getElementById(`figure${this.idFigure}`).style.animationPlayState = "paused";
-		    this.ecoule = Date.now()-this.start;
+		    this.ecoule = Date.now() - this.start;
 		    this.playPauseBtn.innerHTML = '<i class="fa fa-play" aria-hidden="true"></i>';
 
 		    return;
