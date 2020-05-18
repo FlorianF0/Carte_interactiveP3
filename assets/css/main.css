@@ -152,6 +152,12 @@ timer {
 		margin: 0 auto;
 		margin-top: 1rem;
 	}
+
+	reservationForm .waitText {
+		margin-top: 2rem;
+		margin-bottom: 4rem;
+	}
+
 }
 
 @media screen and (max-width: 768px) {

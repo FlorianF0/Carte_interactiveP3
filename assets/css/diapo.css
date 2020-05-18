@@ -2,7 +2,7 @@
 section.slideshow {
 	position: relative;
 	width: 960px;
-	max-width: 90vw;
+	max-width: 85vw;
 	height: 240px;
 	padding: 10px;
 	margin: 0 auto;
@@ -15,7 +15,7 @@ section.slideshow {
 section.slideshow .container {
 	position: relative;
 	width: 960px;
-	max-width: 90vw;
+	max-width: 85vw;
 	height: 240px;
 	overflow: hidden;
 	margin: 0 auto;
@@ -32,7 +32,7 @@ section.slideshow slider {
 section.slideshow figure {
 	position: relative;
 	display: inline-block;
-	max-width: 90vw;
+	max-width: 85vw;
 	padding:0;
 	margin: 0;
 	margin-right:-4px; 
