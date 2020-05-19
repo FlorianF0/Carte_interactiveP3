@@ -48,12 +48,12 @@ class Carte {
         var marker = L.marker(
           new L.latLng(data[i].position.lat, data[i].position.lng),
           {
-            icon         : this.getIcon(data[i].available_bikes),
             address      : data[i].address,
+            icon         : this.getIcon(data[i].available_bikes),
             qtyAvailable : data[i].available_bikes,
             qtyStation   : data[i].bike_stands,
-            title        : title,
             status       : data[i].status,
+            title        : title,
           }
         );
         marker.on('click', function(event) {

@@ -6,34 +6,52 @@ class Reservation{
 
     domTarget.appendChild(this.dom);
     this.waitTemplate();
+    if( this.checkResa(true) ) {
+      this.mainTemplate();
+      this.btnTimer();
+    }
   }
 
   waitTemplate() {
     this.dom.innerHTML = `<p class="waitText"> Cliquez sur un icône pour accéder aux informations de la station.</p>`
   }
 
-  mainTemplate(data){
-    // console.log('data', data)
-    const nom    = window.webBike.dataManager.getLocal("nom");
-    const prenom = window.webBike.dataManager.getLocal("prenom");
-    this.station = data.title;
-    this.qtyAvailable = data.qtyAvailable;
+  mainTemplate(data = null){
+    console.log('data', data)
+    let title;
+    if (data !== null) {
+      for (let [key, value] of Object.entries(data)) {
+        this[key]=value;
+      }
+    }
+    else {
+      const stationData = JSON.parse(window.webBike.dataManager.getSession("station"));
+      this.qtyAvailable = stationData.qtyAvailable;
+      this.address      = stationData.address;
+      this.title        = stationData.station;
+      this.qtyStation   = stationData.qtyStation;
+      this.status       = stationData.status;
+    }
+    const nom         = window.webBike.dataManager.getLocal("nom");
+    const prenom      = window.webBike.dataManager.getLocal("prenom");
 
-    if (data.title === window.webBike.dataManager.getSession("station")){
-      data.qtyAvailable--;
+    if (this.checkResa()){
+      // data.qtyAvailable--;
+      alert("-")
+      this.qtyAvailable--;
     }
 
     this.dom.innerHTML = `
       <h2>Détails de la station</h2>
 
       <div class="infoStation">
-        <p><strong>Nom de la station :</strong> ${data.title} </p>
-        <p><strong>Position :</strong> ${this.checkAddress(data.address)}</p>
-        <p><strong>Statut :</strong> ${data.status}</p>
+        <p><strong>Nom de la station :</strong> ${this.title} </p>
+        <p><strong>Position :</strong> ${this.checkAddress(this.address)}</p>
+        <p><strong>Statut :</strong> ${this.status}</p>
 
         <ul>
-          <li> ${data.qtyAvailable} vélos disponibles</li>
-          <li> ${data.qtyStation} place${this.pluriel(data.qtyStation)} restante${this.pluriel(data.qtyStation)}</li>
+          <li> ${this.qtyAvailable} vélo${this.pluriel(this.qtyAvailable)} disponible${this.pluriel(this.qtyAvailable)}</li>
+          <li> ${this.qtyStation} place${this.pluriel(this.qtyStation)} restante${this.pluriel(this.qtyStation)}</li>
         </ul>
       </div>
 
@@ -57,7 +75,7 @@ class Reservation{
 
       <div class="infoStation">
         <p><strong>Nom de la station :</strong> ${data.title} </p>
-        <p><strong>Position :</strong> ${this.checkAddress(data.address)}</p>
+        <p><strong>Position :</strong> ${this.checkAddress(this.address)}</p>
         <p><strong>Statut :</strong> ${data.status}</p>
 
         <ul>
@@ -100,6 +118,37 @@ class Reservation{
     return address;
   }
 
+  checkResa(skipTitle=false){
+    //1. verif 
+    let stationData = window.webBike.dataManager.getSession("station");
+
+    console.log("-",stationData);
+
+    if (stationData === "") return false;
+    
+    stationData = JSON.parse(stationData);
+    console.log("--",stationData);
+    //2. verif station
+    if (!skipTitle){
+      if (this.title !== stationData.station) return false;
+    }
+
+    //3. verif resa valide
+    const bookedDate = window.webBike.dataManager.getSession("orderTime");
+    console.log("---",Date.now() >= config.timer+bookedDate);
+    if (Date.now() >= config.timer+bookedDate) {
+      this.clearResa();
+      return false;
+    }
+
+    return true;
+  }
+
+  clearResa(){
+    alert("todo : effacer réservation");
+
+  }
+
   update(data){
     this.mainTemplate();
   }
@@ -132,10 +181,18 @@ class Reservation{
     window.webBike.dataManager.setLocal("nom", this.domInputName.value);
     window.webBike.dataManager.setLocal("prenom", this.domInputFirstName.value);
     window.webBike.dataManager.setSession("orderTime", Date.now());
-    window.webBike.dataManager.setSession("station", this.station);
-
+    window.webBike.dataManager.setSession(
+      "station", 
+      JSON.stringify({
+        address      : this.address,
+        qtyAvailable : this.qtyAvailable,
+        qtyStation   : this.qtyStation,
+        station      : this.title,
+        status       : this.status
+      })
+    );
     this.btnTimer();
-    
+    this.mainTemplate();
   }
 
   btnTimer() {
@@ -145,12 +202,13 @@ class Reservation{
       clearInterval(webBike.timer.startTimer);
       this.domTimer.remove();
 
-      new Timer(document.getElementsByTagName('main')[0],
-                                              this.station, 
-                                              this.domInputName.value, 
-                                              this.domInputFirstName.value, 
-                                              this.qtyAvailable
-                                             );
+      new Timer(
+        document.getElementsByTagName('main')[0],
+        this.station, 
+        this.domInputName.value, 
+        this.domInputFirstName.value, 
+        this.qtyAvailable
+      );
     }
 
     else {

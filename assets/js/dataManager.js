@@ -6,7 +6,7 @@ class DataManager{
 
   async getMapPoints(src){
     const response = await fetch(src)
-    let data = await response.json();
+    const data     = await response.json();
     return data;
   }
 
