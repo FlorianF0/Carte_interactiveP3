@@ -26,6 +26,10 @@ class DataManager{
     return result;
   }
 
+  removeSession(key){
+    sessionStorage.removeItem(this.idKey+key);
+  }
+
   setSession(key, value){
     sessionStorage.setItem(this.idKey+key,value);
   }

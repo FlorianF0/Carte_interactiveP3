@@ -9,12 +9,72 @@ class Reservation{
 
     if( this.checkResa(true) ) {
       this.mainTemplate();
-      this.btnTimer();
+      // this.btnTimer();
     }
   }
 
-  waitTemplate() {
-    this.dom.innerHTML = `<p class="waitText"> Cliquez sur un icône pour accéder aux informations de la station.</p>`
+  btnTimer() {
+    this.domTimer = document.getElementsByTagName('timer')[0];
+
+    if (this.domTimer) {
+      clearInterval(webBike.timer.startTimer);
+      this.domTimer.remove();
+
+      new Timer(
+        document.getElementsByTagName('main')[0],
+        this.station, 
+        this.domInputName.value, 
+        this.domInputFirstName.value, 
+        this.qtyAvailable
+      );
+    }
+
+    else {
+      new Timer(
+        document.getElementsByTagName('main')[0],
+        this.station, 
+        this.domInputName.value, 
+        this.domInputFirstName.value, 
+        this.qtyAvailable
+      );
+    }
+  }
+
+  canvaTemplate() {
+    this.domReservation.innerHTML = `
+      <p>Signer pour finir la réservation</p>
+      <input id="btnReservation" type="button" name="Réservation" value="Finir la réservation" onClick="webBike.reservation.order()">
+    `;
+  }
+
+  checkAddress(address){
+    if(address === "") return `Indisponible`;
+    return address.toLowerCase();
+  }
+
+  checkResa(skipTitle=false){
+    //1. verif 
+    let stationData = window.webBike.dataManager.getSession("station");
+    if (stationData === "") return false;
+    
+    //2. verif station
+    if (!skipTitle){
+      stationData = JSON.parse(stationData);
+      if (this.title !== stationData.station) return false;
+    }
+
+    //3. verif resa valide
+    const bookedDate = window.webBike.dataManager.getSession("orderTime");
+    if (Date.now() >= config.timer + bookedDate) {
+      this.clearResa();
+      return false;
+    }
+    return true;
+  }
+
+  clearResa(){
+    window.webBike.dataManager.removeSession("station");
+    window.webBike.dataManager.removeSession("orderTime");
   }
 
   mainTemplate(data = null){
@@ -37,8 +97,7 @@ class Reservation{
     const prenom      = window.webBike.dataManager.getLocal("prenom");
 
     if (this.checkResa()){
-      // data.qtyAvailable--;
-      alert("-")
+      console.log("---> décrémente")
       this.qtyAvailable--;
     }
 
@@ -92,93 +151,6 @@ class Reservation{
     `;
   }
 
-  canvaTemplate() {
-    this.domReservation.innerHTML = `
-      <p>Signer pour finir la réservation</p>
-      <input id="btnReservation" type="button" name="Réservation" value="Finir la réservation" onClick="webBike.reservation.order()">
-    `;
-  }
-
-  pluriel(qty){
-    if (qty > 1) return "s";
-    return "";
-  }
-
-  textForm(str){
-    return str.toLowerCase();
-  }
-
-  checkAddress(address){
-    if(address === "") { 
-      address = `Indisponible`;
-    }
-    else {
-      address = this.textForm(address);
-    }
-
-    return address;
-  }
-
-  checkResa(skipTitle=false){
-    //1. verif 
-    let stationData = window.webBike.dataManager.getSession("station");
-
-    console.log("-",stationData);
-
-    if (stationData === "") return false;
-    
-    stationData = JSON.parse(stationData);
-    console.log("--",stationData);
-    //2. verif station
-    if (!skipTitle){
-      if (this.title !== stationData.station) return false;
-    }
-
-    //3. verif resa valide
-    const bookedDate = window.webBike.dataManager.getSession("orderTime");
-    console.log("---",Date.now() >= config.timer + bookedDate);
-      
-    if (Date.now() >= config.timer + bookedDate) {
-      this.clearResa();
-      return false;
-    }
-
-    return true;
-  }
-
-  clearResa(){
-    alert("todo : effacer réservation");
-
-  }
-
-  update(data){
-    this.mainTemplate();
-  }
-
-  showCanva() {
-    this.domInputName       = document.getElementById('nom');
-    this.domInputFirstName  = document.getElementById('prenom');
-    this.domInputForm       = document.querySelector('.inputForm');
-    this.domReservation     = document.getElementsByClassName("reservation")[0];
-
-    if (this.domInputName.value === "" || this.domInputFirstName.value === "") {
-      this.domInputForm.appendChild(this.domMsgErreur);
-      this.domMsgErreur.innerHTML = `Entrez votre nom et prénom.`;
-
-      return false;
-    }
-
-    else {
-      this.domMsgErreur.remove();
-
-      this.canvaTemplate();
-
-      new Canva(document.querySelector('.reservation'), document.querySelector('.reservation > p'));
-      this.domBtnReserv = document.getElementById('btnReservation');
-      this.domBtnReserv.style.margin = "1rem";
-    }
-  }
-
   order(){
     window.webBike.dataManager.setLocal("nom", this.domInputName.value);
     window.webBike.dataManager.setLocal("prenom", this.domInputFirstName.value);
@@ -197,30 +169,43 @@ class Reservation{
     this.mainTemplate();
   }
 
-  btnTimer() {
-    this.domTimer = document.getElementsByTagName('timer')[0];
+  pluriel(qty){
+    if (qty > 1) return "s";
+    return "";
+  }
 
-    if (this.domTimer) {
-      clearInterval(webBike.timer.startTimer);
-      this.domTimer.remove();
+  showCanva() {
+    this.domInputName       = document.getElementById('nom');
+    this.domInputFirstName  = document.getElementById('prenom');
+    this.domInputForm       = document.querySelector('.inputForm');
+    this.domReservation     = document.getElementsByClassName("reservation")[0];
 
-      new Timer(
-        document.getElementsByTagName('main')[0],
-        this.station, 
-        this.domInputName.value, 
-        this.domInputFirstName.value, 
-        this.qtyAvailable
-      );
+    if (this.domInputName.value === "" || this.domInputFirstName.value === "") {
+      this.domInputForm.appendChild(this.domMsgErreur);
+      this.domMsgErreur.innerHTML = `Entrez votre nom et prénom.`;
+      return false;
     }
 
     else {
-      new Timer(
-        document.getElementsByTagName('main')[0],
-        this.station, 
-        this.domInputName.value, 
-        this.domInputFirstName.value, 
-        this.qtyAvailable
-      );
+      this.domMsgErreur.remove();
+
+      this.canvaTemplate();
+
+      new Canva(document.querySelector('.reservation'), document.querySelector('.reservation > p'));
+      this.domBtnReserv = document.getElementById('btnReservation');
+      this.domBtnReserv.style.margin = "1rem";
     }
+  }
+
+  textForm(str){ //fonction utile?
+    return str.toLowerCase();
+  }
+
+  update(data){ //fonction utile?
+    this.mainTemplate(data);
+  }
+
+  waitTemplate() {
+    this.dom.innerHTML = `<p class="waitText"> Cliquez sur un icône pour accéder aux informations de la station.</p>`
   }
 }
