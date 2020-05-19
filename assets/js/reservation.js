@@ -6,6 +6,7 @@ class Reservation{
 
     domTarget.appendChild(this.dom);
     this.waitTemplate();
+
     if( this.checkResa(true) ) {
       this.mainTemplate();
       this.btnTimer();
@@ -135,8 +136,9 @@ class Reservation{
 
     //3. verif resa valide
     const bookedDate = window.webBike.dataManager.getSession("orderTime");
-    console.log("---",Date.now() >= config.timer+bookedDate);
-    if (Date.now() >= config.timer+bookedDate) {
+    console.log("---",Date.now() >= config.timer + bookedDate);
+      
+    if (Date.now() >= config.timer + bookedDate) {
       this.clearResa();
       return false;
     }
@@ -212,12 +214,13 @@ class Reservation{
     }
 
     else {
-      new Timer(document.getElementsByTagName('main')[0],
-                                              this.station, 
-                                              this.domInputName.value, 
-                                              this.domInputFirstName.value, 
-                                              this.qtyAvailable
-                                             );
+      new Timer(
+        document.getElementsByTagName('main')[0],
+        this.station, 
+        this.domInputName.value, 
+        this.domInputFirstName.value, 
+        this.qtyAvailable
+      );
     }
   }
 }
