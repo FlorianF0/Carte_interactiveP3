@@ -22,6 +22,24 @@ class Carte {
       });
     }
 
+    getTitle(pointName){
+      return pointName.slice(pointName.indexOf(" - ")+3);
+    }
+
+    getIcon(qty){
+      let iconUrl = "images/icons/map-icon-greenTr.png";
+      if (qty <= config.warningIconQty) iconUrl = "images/icons/map-icon-orangeTr.png";
+      if (qty===0)                      iconUrl = "images/icons/map-icon-redTr.png";
+      return L.icon({
+        iconUrl: iconUrl,
+        iconSize:   [28, 38],
+        iconAnchor: [19, 38],
+        // popupAnchor: [-3, -76],
+        // shadowUrl: 'my-icon-shadow.png',
+        // shadowSize: [68, 95],
+        // shadowAnchor: [22, 94]
+      });
+    }
 
     async initMap(dataSrc){
       this.createMap();
@@ -79,22 +97,5 @@ class Carte {
       window.webBike.reservartion.update()
     }
 
-    getTitle(pointName){
-      return pointName.slice(pointName.indexOf(" - ")+3);
-    }
-
-    getIcon(qty){
-      let iconUrl = "images/icons/map-icon-greenTr.png";
-      if (qty <= config.warningIconQty) iconUrl = "images/icons/map-icon-orangeTr.png";
-      if (qty===0)                      iconUrl = "images/icons/map-icon-redTr.png";
-      return L.icon({
-        iconUrl: iconUrl,
-        iconSize:   [28, 38],
-        iconAnchor: [19, 38],
-        // popupAnchor: [-3, -76],
-        // shadowUrl: 'my-icon-shadow.png',
-        // shadowSize: [68, 95],
-        // shadowAnchor: [22, 94]
-      });
-    }
+   
 }

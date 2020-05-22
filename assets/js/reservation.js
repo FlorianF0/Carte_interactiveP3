@@ -22,20 +22,18 @@ class Reservation{
 
       new Timer(
         document.getElementsByTagName('main')[0],
-        this.station, 
+        this.title, 
         this.domInputName.value, 
-        this.domInputFirstName.value, 
-        this.qtyAvailable
+        this.domInputFirstName.value,
       );
     }
 
     else {
       new Timer(
         document.getElementsByTagName('main')[0],
-        this.station, 
+        this.title, 
         this.domInputName.value, 
-        this.domInputFirstName.value, 
-        this.qtyAvailable
+        this.domInputFirstName.value,
       );
     }
   }
@@ -52,7 +50,7 @@ class Reservation{
     return address.toLowerCase();
   }
 
-  checkResa(skipTitle=false){
+  checkResa(skipTitle = false){
     //1. verif 
     let stationData = window.webBike.dataManager.getSession("station");
     if (stationData === "") return false;
@@ -67,6 +65,7 @@ class Reservation{
     const bookedDate = window.webBike.dataManager.getSession("orderTime");
     if (Date.now() >= config.timer + bookedDate) {
       this.clearResa();
+
       return false;
     }
     return true;
@@ -98,6 +97,7 @@ class Reservation{
 
     if (this.checkResa()){
       console.log("---> décrémente")
+      // window.webBike.timer.mainTemplate();
       this.qtyAvailable--;
     }
 
@@ -195,14 +195,6 @@ class Reservation{
       this.domBtnReserv = document.getElementById('btnReservation');
       this.domBtnReserv.style.margin = "1rem";
     }
-  }
-
-  textForm(str){ //fonction utile?
-    return str.toLowerCase();
-  }
-
-  update(data){ //fonction utile?
-    this.mainTemplate(data);
   }
 
   waitTemplate() {

@@ -1,6 +1,6 @@
 
 class Timer {
-	constructor(domTarget, station, name, firstName, qtyAvaible){
+	constructor(domTarget, station, name, firstName){
 		webBike.timer = this;
 		this.domTimer = document.createElement("timer");
 
@@ -10,30 +10,35 @@ class Timer {
 	}
 
 	mainTemplate(station, firstName, name){
-		// const timer    = window.webBike.dataManager.getSession("timer");
-
 		this.domTimer.innerHTML = `
 				Vélo réservé à la station ${station} par ${firstName} ${name}</br>
-				Temps renstant : <compteur>20 min</compteur>
+				Temps renstant : <compteur></compteur>
 		`;
 
 		this.t(config.timer, document.getElementsByTagName("compteur")[0]);
 	}
 
 	t(duree, dom) {
-		var counter = duree;
+		var orderTime = window.webBike.dataManager.getSession("orderTime");
 
-		this.startTimer = setInterval(function() {
-			this.domCompteur = dom;
-			this.domCompteur.innerHTML = counter;
-			counter--;
+		if (orderTime != ""){
+			var counter = Number(orderTime) + Number(duree);
+		}
 
-			webBike.timer.timeConversion(counter, domCompteur);
+		else {
+			var counter = Date.now() + duree;
+		}
+
+		this.startTimer = setInterval(function(){
+			var timeNow = Date.now()
+			this.distance = counter - timeNow ;
+
+			webBike.timer.timeConversion(this.distance, dom)
 		}, 1000)
 	}
 
 	timeConversion(time, dom) {
-		let d = time;
+		let d = Math.round(time / 1000);
 		let m = 0;
 		let h = 0;
 		this.domCompteur = document.getElementsByTagName("compteur")[0];
