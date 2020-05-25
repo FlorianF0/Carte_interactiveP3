@@ -1,4 +1,18 @@
+/**
+* Class Slider
+*
+* Gére le slider -> défilement des slides / bouton prev/next & play/pause
+*
+*/
+
 class Slider {
+	
+  /**
+   * @param {string} domTarget 	- Dom principal
+   * @param {string} domTarget2 - Dom secondaire
+   * @param {string} name 		- Nom de la class
+   *
+   */
 	constructor(domTarget, domTarget2, name) {
 		window.webBike[name] = this;
 		this.domSlider		= document.createElement("slider");
@@ -30,6 +44,13 @@ class Slider {
 	    `;
   	}
 
+  /**
+   * Change automatiquement les slides toutes les 5 sec. -> "sens = +" (défilement toujours du même sens)
+   * Cette fonction est aussi appelé par les boutons prev / next, pour pouvoir changer manuelement les slides -> "sens = +" ou "sens = -".
+   *  
+   * @param {string} sens - Sens du défilement des slides
+   *
+   */
   	changeSlide(sens="+") {
  	
 		this.figures = document.querySelectorAll("figure");

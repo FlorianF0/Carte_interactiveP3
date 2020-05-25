@@ -1,5 +1,20 @@
+/**
+ * Class Timer
+ *
+ * Génère le timer quand on réserve un vélo.
+ *
+ */
+
 
 class Timer {
+
+  /**
+   * @param {string} domTarget 	- Dom principal
+   * @param {string} station 	- Nom de la station où l'on va réservé le vélo
+   * @param {string} name 		- Nom de la personne qui réserve le vélo
+   * @param {string} firstName 	- Prénom de la pesonne qui reverse le vélo
+   *
+   */
 	constructor(domTarget, station, name, firstName){
 		webBike.timer = this;
 		this.domTimer = document.createElement("timer");
@@ -9,6 +24,12 @@ class Timer {
     	this.mainTemplate(station, firstName, name);
 	}
 
+  /**
+   * @param {string} station	- Nom de la station où l'on va réservé le vélo
+   * @param {string} name 		- Nom de la personne qui réserve le vélo
+   * @param {string} firstName 	- Prénom de la pesonne qui reverse le vélo
+   *
+   */
 	mainTemplate(station, firstName, name){
 		this.domTimer.innerHTML = `
 				Vélo réservé à la station ${station} par ${firstName} ${name}</br>
@@ -18,6 +39,11 @@ class Timer {
 		this.t(config.timer, document.getElementsByTagName("compteur")[0]);
 	}
 
+  /**
+   * @param {number} duree 	- Durée de la réservation
+   * @param {string} dom 	- Dom où le timer sera affiché
+   *
+   */
 	t(duree, dom) {
 		var orderTime = window.webBike.dataManager.getSession("orderTime");
 
@@ -30,13 +56,18 @@ class Timer {
 		}
 
 		this.startTimer = setInterval(function(){
-			var timeNow = Date.now()
+			var timeNow   = Date.now()
 			this.distance = counter - timeNow ;
 
 			webBike.timer.timeConversion(this.distance, dom)
 		}, 1000)
 	}
 
+  /**
+   * @param {number} time 	- Durée de la reservation (en fonction de Date_now)
+   * @param {string} dom 	- Dom lié au timer qui sera affiché
+   *
+   */
 	timeConversion(time, dom) {
 		let d = Math.round(time / 1000);
 		let m = 0;

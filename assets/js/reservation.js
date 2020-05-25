@@ -1,4 +1,16 @@
+/**
+ * Class Slider
+ *
+ * Gére le slider -> défilement des slides / bouton prev/next & play/pause
+ *
+ */
+
 class Reservation{
+
+  /**
+   * @param {string} domTarget - Dom principal
+   *
+   */  
   constructor(domTarget){
     webBike.reservation = this;
     this.dom            = document.createElement("reservationForm");
@@ -13,6 +25,10 @@ class Reservation{
     }
   }
 
+  /**
+   * Déclenche le timer, si un timer est déjà actif, l'efface et en recrée un.
+   *
+   */
   btnTimer() {
     this.domTimer = document.getElementsByTagName('timer')[0];
 
@@ -45,11 +61,22 @@ class Reservation{
     `;
   }
 
+  /**
+   * @param {string} address    - L'adresse de la station
+   * 
+   * @returns {string} address  - Retourne l'adresse en caractère minuscule.
+   */
   checkAddress(address){
     if(address === "") return `Indisponible`;
     return address.toLowerCase();
   }
 
+  /**
+   * Check si la réservation est valide
+   * @param {boolean} skipTittle
+   *
+   * @returns {boolean} 
+   */
   checkResa(skipTitle = false){
     //1. verif 
     let stationData = window.webBike.dataManager.getSession("station");
@@ -71,11 +98,19 @@ class Reservation{
     return true;
   }
 
+  /**
+   * Supprime les données de session.
+   *
+   */
   clearResa(){
     window.webBike.dataManager.removeSession("station");
     window.webBike.dataManager.removeSession("orderTime");
   }
 
+  /**
+   * @param {string} data - Donnée récupéré via l'API JCDecaux
+   * 
+   */
   mainTemplate(data = null){
     console.log('data', data)
     let title;
@@ -129,6 +164,10 @@ class Reservation{
     `;
   }
 
+  /**
+   * @param {string} data - Donnée récupéré via l'API JCDecaux
+   *
+   */
   noReservationTemplate(data) {
     this.dom.innerHTML = `
       <h2>Détails de la station</h2>
@@ -151,6 +190,10 @@ class Reservation{
     `;
   }
 
+ /**
+   * Définie les données en local & session
+   *
+   */
   order(){
     window.webBike.dataManager.setLocal("nom", this.domInputName.value);
     window.webBike.dataManager.setLocal("prenom", this.domInputFirstName.value);
@@ -169,11 +212,22 @@ class Reservation{
     this.mainTemplate();
   }
 
+ /**
+   * Rajoute un "s" si une qty est supérieur à 0.
+   *
+   * @param {number} qty - Quantité de vélo disponible à une station.
+   *
+   * @returns {sting}
+   */
   pluriel(qty){
     if (qty > 1) return "s";
     return "";
   }
 
+ /**
+   * Instancie la class Canva en vérifiant si tous les champs nécessaire on bien était remplis.
+   *
+   */  
   showCanva() {
     this.domInputName       = document.getElementById('nom');
     this.domInputFirstName  = document.getElementById('prenom');

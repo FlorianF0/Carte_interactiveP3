@@ -1,5 +1,18 @@
+/**
+* Class Carte
+*
+* Crée la carte.
+* Gère la carte : point / données spécifique à la station.
+*
+*/
+
 class Carte {
-    constructor(domTarget,name)	{
+  /**
+   * @param {string} domTarget  - Dom principal
+   * @param {string} name       - Nom de la class
+   *
+   */
+    constructor(domTarget, name)	{
       window.webBike[name] = this;
       const dom = document.createElement("div");
       dom.id = "mapid";
@@ -22,10 +35,24 @@ class Carte {
       });
     }
 
+  /**
+   * Enleve le numéro et le tiret du nom de la station -> on ne garde que le nom (lettre) de la station
+   *
+   * @param {string} pointName - Nom du point
+   *
+   * @returns {string}
+   */
     getTitle(pointName){
       return pointName.slice(pointName.indexOf(" - ")+3);
     }
 
+  /**
+   * Affiche les icons personnalisés sur la map
+   *
+   * @param {number} qty - Quantité de vélo disponible
+   * 
+   * @returns {object} icon
+   */
     getIcon(qty){
       let iconUrl = "images/icons/map-icon-greenTr.png";
       if (qty <= config.warningIconQty) iconUrl = "images/icons/map-icon-orangeTr.png";
@@ -41,6 +68,16 @@ class Carte {
       });
     }
 
+  /**
+   * Crée la map, récupère les données. 
+   * Ajout des cluster -> regroupement des points
+   * Au clic sur l'icon, on affiche les données dans la partie "info station".
+   *
+   * @param {string} dataSrc - Donnée récupérer via l'API
+   * 
+   * @returns {array} data 
+   * @returns {object} divIcon
+   */
     async initMap(dataSrc){
       this.createMap();
       const data = await webBike.dataManager.getMapPoints(dataSrc);
@@ -90,12 +127,5 @@ class Carte {
         markersCluster.addLayer(marker);
       }
       this.mymap.addLayer(markersCluster);
-    }
-
-    markerOnClick(){
-      console.log(this);
-      window.webBike.reservartion.update()
-    }
-
-   
+    }  
 }

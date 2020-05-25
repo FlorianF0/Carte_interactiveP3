@@ -1,3 +1,9 @@
+/**
+* Class Canva
+*
+* Gére le canva (pc / mobile)
+*
+*/
 class Canva {
 	constructor(domTarget, domSecond) {
 		webBike.canva = this;
@@ -60,6 +66,7 @@ class Canva {
 				x : event.clientX - this.rect.left,
 		  		y : event.clientY - this.rect.top
 		  	};
+
 			console.log(this.prevPoint.x, "x2DrawP")
 
 		};
@@ -84,15 +91,16 @@ class Canva {
 
 
 	startM(event){
-		console.log("start",event, this);
+		// console.log("start",event, this);
 
 		event.preventDefault();
 	    this.rect 	 = this.dom.getBoundingClientRect();
-
 		this.isDrawing = true;
 
-		this.touch = event.changedTouches[0];		
+		this.touch = event.changedTouches[0];	
+
 			console.log(this.prevPointMobil.x, "xStart")
+
 		this.prevPointMobil = {
 		  x : this.touch.clientX - this.rect.left,
 		  y : this.touch.clientY - this.rect.top	
@@ -107,17 +115,24 @@ class Canva {
 		console.log("draw",event)
 
 		if (this.isDrawing === true) {
-			event.preventDefault();
 			this.rect 	 = this.dom.getBoundingClientRect();
+			event.preventDefault();
 
 			console.log(this.touch.clientX, "xDraw")
+			console.log(this.prevPointMobil.x, "prevX")
+			console.log(this.rect.left, "rect left")
+
 
 			window.webBike.canva.drawLine(this.context, this.prevPointMobil.x, this.prevPointMobil.y, this.touch.clientX - this.rect.left, this.touch.clientY - this.rect.top);
 			this.prevPointMobil = {
 			  x : this.touch.clientX - this.rect.left,
 			  y : this.touch.clientY - this.rect.top	
 			};
+
+
 			console.log(this.touch.clientX, "x2Draw")
+			console.log(this.prevPointMobil.x, "prevX2")
+			console.log(this.rect.left, "rect left2")
 
 		};
 	}
@@ -125,7 +140,7 @@ class Canva {
 
 
 	stopM(event){
-		console.log("stop",event)
+		// console.log("stop",event)
 
 		if (this.isDrawing === true) {
 			event.preventDefault();
