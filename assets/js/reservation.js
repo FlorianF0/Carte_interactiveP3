@@ -114,11 +114,13 @@ class Reservation{
   mainTemplate(data = null){
     console.log('data', data)
     let title;
+
     if (data !== null) {
       for (let [key, value] of Object.entries(data)) {
         this[key]=value;
       }
     }
+
     else {
       const stationData = JSON.parse(window.webBike.dataManager.getSession("station"));
       this.qtyAvailable = stationData.qtyAvailable;
@@ -127,6 +129,7 @@ class Reservation{
       this.qtyStation   = stationData.qtyStation;
       this.status       = stationData.status;
     }
+
     const nom         = window.webBike.dataManager.getLocal("nom");
     const prenom      = window.webBike.dataManager.getLocal("prenom");
 
@@ -208,6 +211,7 @@ class Reservation{
         status       : this.status
       })
     );
+    
     this.btnTimer();
     this.mainTemplate();
   }

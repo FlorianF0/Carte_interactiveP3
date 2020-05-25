@@ -15,37 +15,33 @@ class Slider {
    */
 	constructor(domTarget, domTarget2, name) {
 		window.webBike[name] = this;
-		this.domSlider		= document.createElement("slider");
-		this.dom			= document.createElement("slideReader");
-		this.duree			= 5000;
-		this.ecoule			= null;
-		this.idFigure		= -1;
-		this.name			= name;
-		this.start			= Date.now();
+		this.domSlider		 = document.createElement("slider");
+		this.dom			 = document.createElement("slideReader");
+		this.duree			 = 5000;
+		this.ecoule			 = null;
+		this.idFigure		 = -1;
+		this.name			 = name;
+		this.start			 = Date.now();
 		this.tempo;
 		
 		domTarget2.appendChild(this.domSlider);
 		domTarget.appendChild(this.dom);
-
-		
+	
 		this.sliderTemplate();
-		this.btnTemplate();
-		
-
+		this.btnTemplate();		
 		this.changeSlide();
-
 	}
 
 	btnTemplate(){
 	    this.dom.innerHTML = `
-	      	<button class="arrowPrev"  onClick="webBike.${this.name}.changeSlide('-')" > <i class="fa fa-arrow-left" aria-hidden="true">  </i></button>
+	      	<button class="arrowPrev"  				onClick="webBike.${this.name}.changeSlide('-')" > 	<i class="fa fa-arrow-left" aria-hidden="true">  </i></button>
 			<button class="playBtn" id="playPause"  onClick="webBike.${this.name}.playPause()" >  		<i class="fa fa-pause" aria-hidden="true">       </i></button>
-			<button class="arrowNext"  onClick="webBike.${this.name}.changeSlide('+')" > <i class="fa fa-arrow-right" aria-hidden="true"> </i></button>
+			<button class="arrowNext"  				onClick="webBike.${this.name}.changeSlide('+')" > 	<i class="fa fa-arrow-right" aria-hidden="true"> </i></button>
 	    `;
   	}
 
   /**
-   * Change automatiquement les slides toutes les 5 sec. -> "sens = +" (défilement toujours du même sens)
+   * Change automatiquement les slides toutes les 5 sec. -> "sens = +" (défilement de gauche à droite)
    * Cette fonction est aussi appelé par les boutons prev / next, pour pouvoir changer manuelement les slides -> "sens = +" ou "sens = -".
    *  
    * @param {string} sens - Sens du défilement des slides
@@ -70,10 +66,10 @@ class Slider {
 		}
 
 		for(let i = 0; i < this.figures.length; i++){
-			if (i !== this.idFigure) document.getElementById(`figure${i}`).className="hidden";
+			if (i !== this.idFigure) document.getElementById(`figure${i}`).className = "hidden";
 		}
 
-		document.getElementById(`figure${this.idFigure}`).className="show";
+		document.getElementById(`figure${this.idFigure}`).className = "show";
 		this.start = Date.now();
 		this.tempo = setTimeout(this.changeSlide.bind(this), this.duree, "+");
 	}
