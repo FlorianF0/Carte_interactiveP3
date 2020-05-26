@@ -60,7 +60,7 @@ class Timer {
 			this.distance = counter - timeNow ;
 
 			webBike.timer.timeConversion(this.distance, dom)
-		}, 1000)
+		}, 1000);
 	}
 
   /**

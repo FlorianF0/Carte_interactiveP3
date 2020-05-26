@@ -22,7 +22,7 @@ class DataManager{
   /**
    * @param {string} src - API & acces
    * 
-   * @returns {array} data
+   * @returns {JSON} data
    */
   async getMapPoints(src){
     const response = await fetch(src)
@@ -44,7 +44,7 @@ class DataManager{
   /**
    * @param {string} value
    * @param {string} key
-   * 
+   * @return {void} 
    */
   setLocal(key, value){
     localStorage.setItem(this.idKey+key,value);
