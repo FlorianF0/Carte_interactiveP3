@@ -8,8 +8,10 @@
 class Reservation{
 
   /**
+   * @construcor
    * @param {string} domTarget - Dom principal
    *
+   * @return {void}
    */  
   constructor(domTarget){
     webBike.reservation = this;
@@ -21,13 +23,13 @@ class Reservation{
 
     if( this.checkResa(true) ) {
       this.mainTemplate();
-      // this.btnTimer();
     }
   }
 
   /**
    * Déclenche le timer, si un timer est déjà actif, l'efface et en recrée un.
    *
+   * @return {void}
    */
   btnTimer() {
     this.domTimer = document.getElementsByTagName('timer')[0];
@@ -54,6 +56,9 @@ class Reservation{
     }
   }
 
+  /*
+   * @return {void}
+   */
   canvaTemplate() {
     this.domReservation.innerHTML = `
       <p>Signer pour finir la réservation</p>
@@ -64,7 +69,7 @@ class Reservation{
   /**
    * @param {string} address    - L'adresse de la station
    * 
-   * @returns {string} address  - Retourne l'adresse en caractère minuscule.
+   * @return {string} address  - Retourne l'adresse en caractère minuscule.
    */
   checkAddress(address){
     if(address === "") return `Indisponible`;
@@ -75,7 +80,7 @@ class Reservation{
    * Check si la réservation est valide
    * @param {boolean} skipTittle
    *
-   * @returns {boolean} 
+   * @return {boolean} 
    */
   checkResa(skipTitle = false){
     //1. verif 
@@ -101,6 +106,7 @@ class Reservation{
   /**
    * Supprime les données de session.
    *
+   * @return {void}   
    */
   clearResa(){
     window.webBike.dataManager.removeSession("station");
@@ -110,9 +116,9 @@ class Reservation{
   /**
    * @param {string} data - Donnée récupéré via l'API JCDecaux
    * 
+   * @return {void}
    */
   mainTemplate(data = null){
-    console.log('data', data)
     let title;
 
     if (data !== null) {
@@ -134,8 +140,6 @@ class Reservation{
     const prenom      = window.webBike.dataManager.getLocal("prenom");
 
     if (this.checkResa()){
-      console.log("---> décrémente")
-      // window.webBike.timer.mainTemplate();
       this.qtyAvailable--;
     }
 
@@ -170,6 +174,7 @@ class Reservation{
   /**
    * @param {string} data - Donnée récupéré via l'API JCDecaux
    *
+   * @return {void}
    */
   noReservationTemplate(data) {
     this.dom.innerHTML = `
@@ -196,6 +201,7 @@ class Reservation{
  /**
    * Définie les données en local & session
    *
+   * @return {void}
    */
   order(){
     window.webBike.dataManager.setLocal("nom", this.domInputName.value);
@@ -221,7 +227,7 @@ class Reservation{
    *
    * @param {number} qty - Quantité de vélo disponible à une station.
    *
-   * @returns {sting}
+   * @return {sting}
    */
   pluriel(qty){
     if (qty > 1) return "s";
@@ -231,6 +237,7 @@ class Reservation{
  /**
    * Instancie la class Canva en vérifiant si tous les champs nécessaire on bien était remplis.
    *
+   * @return {void}
    */  
   showCanva() {
     this.domInputName       = document.getElementById('nom');
@@ -255,6 +262,9 @@ class Reservation{
     }
   }
 
+  /*
+   * @return {void}
+   */
   waitTemplate() {
     this.dom.innerHTML = `<p class="waitText"> Cliquez sur un icône pour accéder aux informations de la station.</p>`
   }

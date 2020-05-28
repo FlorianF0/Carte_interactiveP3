@@ -11,6 +11,7 @@ class Carte {
    * @param {string} domTarget  - Dom principal
    * @param {string} name       - Nom de la class
    *
+   * @return {void}
    */
     constructor(domTarget, name)	{
       window.webBike[name] = this;
@@ -51,7 +52,7 @@ class Carte {
    *
    * @param {number} qty - Quantité de vélo disponible
    * 
-   * @returns {object} icon
+   * @returns {JSON} icon
    */
     getIcon(qty){
       let iconUrl = "images/icons/map-icon-greenTr.png";
@@ -75,13 +76,12 @@ class Carte {
    *
    * @param {string} dataSrc - Donnée récupérer via l'API
    * 
-   * @returns {array} data 
-   * @returns {object} divIcon
+   * @returns {JSON} data 
+   * @returns {JSON} divIcon
    */
     async initMap(dataSrc){
       this.createMap();
       const data = await webBike.dataManager.getMapPoints(dataSrc);
-      console.log(data);
 
       var markersCluster = new L.MarkerClusterGroup({
         maxClusterRadius: 70,

@@ -3,10 +3,17 @@
 *
 *  Gére le canva (pc / mobile)
 *
-*  @constructor
 *  @return {Canva} [description]
 */
 class Canva {
+  
+  /*
+   * @constructor
+   * @param   {string} domTarget
+   * @param	  {string} domSecond
+   *  
+   * @return {void}
+   */
 	constructor(domTarget, domSecond) {
 		webBike.canva = this;
 		this.dom				= document.createElement('canvas');
@@ -30,16 +37,17 @@ class Canva {
     this.dom.ontouchstart = (event)=>{
     	this.mobile = true;
     	this.start(event);
-    }
+    	}
 
     this.dom.ontouchmove  = (event)=>this.draw(event);
     this.dom.ontouchend   = (event)=>this.stop(event);
-
-    // console.log(touchstart())
-    //évènements mobiles : https://developer.mozilla.org/fr/docs/Web/Guide/DOM/Events/Touch_events
-    //dessiner dans le canvas : https://developer.mozilla.org/fr/docs/Web/API/Element/mousedown_event
 	}	
 
+  /*
+   * @param   {string} event  
+   * 
+   * @return {void}
+   */
 	draw(event){
 		event.preventDefault();
 		if (this.isDrawing === true) {
@@ -51,8 +59,9 @@ class Canva {
 
 	/**
 	 * [drawLine description]
-	 * @param  {[type]} x2 [description]
-	 * @param  {[type]} y2 [description]
+	 * @param  {number} x2 
+	 * @param  {number} y2 
+	 *
 	 * @return {void}
 	 */
 	drawLine(x2, y2) {
@@ -67,19 +76,20 @@ class Canva {
 
 	/**
 	 * [getCoord description]
-	 * @param  {[type]} event [description]
-	 * @return {JSON}       [description]
+	 * @param  {string} event 
+	 *
+	 * @return {JSON}       
 	 */
 	getCoord(event){
 		let rect 	 = this.dom.getBoundingClientRect();
 		if (! this.mobile ) return {
 			"x" : event.clientX - rect.left,
-		  "y" : event.clientY - rect.top
+		  	"y" : event.clientY - rect.top
 		};
 		let touch  = event.changedTouches[0];	
 		return {
 			"x" : touch.clientX - rect.left,
-		  "y" : touch.clientY - rect.top	
+		  	"y" : touch.clientY - rect.top	
 		}
 	}
 
@@ -94,12 +104,22 @@ class Canva {
 		};
 	}
 
+  /*
+   * @param   {string} event 
+   *  
+   * @return {void}
+   */
 	start(event){
 		event.preventDefault();
 		this.isDrawing = true;
 		this.prevPoint = this.getCoord(event);
 	}
 
+  /*
+   * @param   {string} event 
+   *  
+   * @return {void}
+   */
 	stop(event){
 		event.preventDefault();
 		if (this.isDrawing === true) {

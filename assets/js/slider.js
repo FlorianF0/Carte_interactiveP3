@@ -8,10 +8,12 @@
 class Slider {
 	
   /**
+   * @constructor
    * @param {string} domTarget 	- Dom principal
    * @param {string} domTarget2 - Dom secondaire
    * @param {string} name 		- Nom de la class
    *
+   * @return {void}
    */
 	constructor(domTarget, domTarget2, name) {
 		window.webBike[name] = this;
@@ -32,6 +34,9 @@ class Slider {
 		this.changeSlide();
 	}
 
+  /*
+   * @return {void}
+   */
 	btnTemplate(){
 	    this.dom.innerHTML = `
 	      	<button class="arrowPrev"  				onClick="webBike.${this.name}.changeSlide('-')" > 	<i class="fa fa-arrow-left" aria-hidden="true">  </i></button>
@@ -46,11 +51,11 @@ class Slider {
    *  
    * @param {string} sens - Sens du défilement des slides
    *
+   * @return {void}
    */
   	changeSlide(sens="+") {
- 	
+
 		this.figures = document.querySelectorAll("figure");
- 
   		clearTimeout(this.tempo);
 		switch (sens) {
 			case "+":
@@ -74,6 +79,9 @@ class Slider {
 		this.tempo = setTimeout(this.changeSlide.bind(this), this.duree, "+");
 	}
 
+  /*
+   * @return {void}
+   */
 	playPause(){
 		if (this.playPauseBtn === undefined) this.playPauseBtn = document.getElementById("playPause");
 
@@ -87,29 +95,33 @@ class Slider {
 		    return;
 		}
 
+
 		document.getElementById(`figure${this.idFigure}`).style.animationPlayState = "running"; 
-		this.tempo = setTimeout(this.changeSlide, this.duree - this.ecoule, "+");
+		this.tempo = setTimeout(this.changeSlide.bind(this), this.duree - this.ecoule, "+");
 		this.ecoule = null;
 	  	this.playPauseBtn.innerHTML = '<i class="fa fa-pause" aria-hidden="true"></i>';
 	}
 
+  /*
+   * @return {void}
+   */
 	sliderTemplate() {
 		this.domSlider.innerHTML = `
 			<figure id="figure0">
 				<img src="images/img_lyon.jpg">
-				<figcaption>1Louer un vélo pour vous déplacer rapidement dans Lyon !</figcaption>
+				<figcaption>1. Louer un vélo pour vous déplacer rapidement dans Lyon !</figcaption>
 			</figure>
 			<figure id="figure1">
 				<img src="images/img3_velo_ConvertImage.jpg">
-				<figcaption>2Regardez la station la plus proche de votre position sur la map. Cliquez sur la station, vous aurez son adresse, et le nombre de vélos disponibles.</figcaption>
+				<figcaption>2. Regardez la station la plus proche de votre position sur la map. Cliquez sur la station, vous aurez son adresse, et le nombre de vélos disponibles.</figcaption>
 			</figure>
 			<figure id="figure2">
 				<img src="images/img_foret.jpg">
-				<figcaption>3Il ne vous reste plus qu'à réserver le vélo grâce au formulaire puis à aller le chercher dans les 20 minutes qui suivent. Si vous dépassez ce temps, il faudra refaire une réservation du vélo.</figcaption>
+				<figcaption>3. Il ne vous reste plus qu'à réserver le vélo grâce au formulaire puis à aller le chercher dans les 20 minutes qui suivent. Si vous dépassez ce temps, il faudra refaire une réservation du vélo.</figcaption>
 			</figure>
 			<figure id="figure3">
 				<img src="images/jardin.jpg">
-				<figcaption>4Pour terminer, déposez le vélo dans une station où des places sont disponibles.</figcaption>
+				<figcaption>4.Pour terminer, déposez le vélo dans une station où des places sont disponibles.</figcaption>
 			</figure>
 			`;
 	}
