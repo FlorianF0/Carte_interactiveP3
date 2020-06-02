@@ -72,7 +72,7 @@ class Reservation{
    * @return {string} address  - Retourne l'adresse en caractère minuscule.
    */
   checkAddress(address){
-    if(address === "") return `Indisponible`;
+    if(address === "")  return `Indisponible`;
     return address.toLowerCase();
   }
 
@@ -182,7 +182,7 @@ class Reservation{
 
       <div class="infoStation">
         <p><strong>Nom de la station :</strong> ${data.title} </p>
-        <p><strong>Position :</strong> ${this.checkAddress(this.address)}</p>
+        <p><strong>Position :</strong> ${this.checkAddress(data.address)}</p>
         <p><strong>Statut :</strong> ${data.status}</p>
 
         <ul>

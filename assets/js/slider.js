@@ -76,7 +76,11 @@ class Slider {
 
 		document.getElementById(`figure${this.idFigure}`).className = "show";
 		this.start = Date.now();
-		this.tempo = setTimeout(this.changeSlide.bind(this), this.duree, "+");
+		
+		this.playPauseBtn = document.getElementById("playPause");
+		console.log(this.playPauseBtn.className)
+
+		if (this.playPauseBtn.className === "play" || "playPause") this.tempo = setTimeout(this.changeSlide.bind(this), this.duree, "+");
 	}
 
   /*
@@ -91,6 +95,9 @@ class Slider {
 		    document.getElementById(`figure${this.idFigure}`).style.animationPlayState = "paused";
 		    this.ecoule = Date.now() - this.start;
 		    this.playPauseBtn.innerHTML = '<i class="fa fa-play" aria-hidden="true"></i>';
+		    this.playPauseBtn.className = "pause";
+		    console.log(this.playPauseBtn)
+
 
 		    return;
 		}
@@ -100,6 +107,8 @@ class Slider {
 		this.tempo = setTimeout(this.changeSlide.bind(this), this.duree - this.ecoule, "+");
 		this.ecoule = null;
 	  	this.playPauseBtn.innerHTML = '<i class="fa fa-pause" aria-hidden="true"></i>';
+	    this.playPauseBtn.className = "play";
+
 	}
 
   /*
