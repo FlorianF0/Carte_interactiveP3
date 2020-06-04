@@ -44,7 +44,7 @@ class Canva {
 	}	
 
   /*
-   * @param   {string} event  
+   * @param  {string} event  
    * 
    * @return {void}
    */

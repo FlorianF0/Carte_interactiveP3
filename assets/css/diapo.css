@@ -44,7 +44,11 @@ section.slideshow figure.hidden {
 }
 
 section.slideshow figure.show {
-	animation: slider 5s infinite;
+	animation: slider 5s reverse infinite;
+}
+
+section.slideshow figure.showPause {
+	animation: slider;
 }
 
 section.slideshow figcaption {
@@ -85,7 +89,7 @@ slideReader {
 .arrowPrev,
 .arrowNext,
 .pauseBtn,
-.playBtn {
+#playPause {
 	color: black;
 	font-size: 1.5rem;
 	padding: 5px;
