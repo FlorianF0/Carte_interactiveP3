@@ -138,7 +138,7 @@ timer {
 	display: block;
 	text-align: center;
 	width: 50vw;
-	height: 3.5rem;
+	height: auto;
 	background-color: rgba(255,255,255,.6);
 	border: 3px solid grey;
 	border-radius: 20px;
