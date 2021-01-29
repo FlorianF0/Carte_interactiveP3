@@ -1,13 +1,19 @@
+
 body {
-	background-color: #8E8178;
-	padding: 50px;
+	background-color: #6071FE;
+	font-family: 'Nunito', sans-serif;
+	overflow-x: hidden;
+	padding-bottom: 6rem;
 }
 
 main {
-	margin-top: 5rem;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
+	position: relative;
+	z-index: 2;
+
+	margin-top: 5rem;
 }
 
 iframe {
@@ -30,16 +36,15 @@ iframe {
 }
 
 reservationForm {
-	background-color: rgba(255,255,255,.6);
+	display: flex;
+    flex-direction: column;
+
+	background-color: white;
 	width: 17rem;
 	min-width: 17rem;
-	max-height: 30rem;
-	border: 3px solid grey;
-	border-radius: 20px;
+	border-radius: 8px;
 	margin-left: 5rem;
-	padding: 2rem;
-	padding-top: 0;
-	font-family: Georgia;
+	padding: 0 2rem .5rem 2rem;
 }
 
 reservationForm .waitText {
@@ -47,28 +52,41 @@ reservationForm .waitText {
 }
 
 reservationForm h2 {
-	font-size: 1.4rem;
+	font-size: 1.8rem;
 }
 
 reservationForm strong {
 	font-size: 1.1rem;
+	font-weight: 700;
+	color: black;
 }
 
-reservationForm .infoStation {
-	height: 12rem;
-}
+ .infoStation {
+	border-bottom: 1px solid grey;
+} 
 
 .infoStation p{
+	font-size: .95rem;
 	height: 2.5rem;
+	color: rgb(129, 129, 129);
+	align-self: center;
+
+}
+
+.infoStation ul {
+	list-style: none;
+	padding: 0;
+	margin-left: 3rem;
+}
+
+.infoStation li strong {
+	color: #9acd32;
+	font-size: 1.3rem;
+	margin-right: .4rem;
 }
 
 .infoStation p:nth-of-type(3) {
 	height: 1rem;
-}
-
-
-reservationForm .inputForm {
-	position: static;
 }
 
 reservationForm .noAvaibleStation {
@@ -77,8 +95,6 @@ reservationForm .noAvaibleStation {
 }
 
 reservationForm .noAvaibleStation p:nth-of-type(1){
-	font-size: 2rem;
-	font-family: system-ui;
 	font-style: italic;
 }
 
@@ -90,20 +106,37 @@ reservationForm input:nth-of-type(1){
 
 reservationForm #nom {
 	margin-left: 26px;
+	border: none;
+	border-bottom: 1px solid black;
+	padding: 5px;
+}
+
+reservationForm #nom:hover,
+reservationForm #prenom:hover  {
+	border-bottom: 1px solid  #FFE3A7
 }
 
 reservationForm #prenom {
 	margin-left: 5px;
+	border: none;
+	border-bottom: 1px solid black;
+	padding: 5px;
 }
 
 reservationForm #btnReservation {
 	display: block;
+	width: 14rem;
+
+	cursor: pointer;
+	background-color: #FFE3A7;
+	border: 1px solid #f2ce82 ;
+	border-radius: 5px;
+	font-weight: 600;
+	letter-spacing: .6px;
 	margin: auto;
 	margin-top: 1rem;
 	padding-top: 5px;
 	padding-bottom: 5px;
-	border-radius: 5px;
-	width: 14rem;
 
 }
 
@@ -125,32 +158,38 @@ reservationForm #btnReservation {
 
 msgErreur {
 	display: block;
+	width: 70%;
+
+	background-color: rgba(230, 53, 53, 0.7);
+	border-radius: 21px;
+	font-size: .75rem;
+	line-height: 1.4rem;
 	margin: auto;
 	margin-top: 10px;
-	font-size: .75rem;
 	text-align: center;
-	padding: 3px;
-	border-radius: 21px;
-	background-color: rgba(230, 53, 53, 0.7);
 }
 
 timer {
 	display: block;
-	text-align: center;
 	width: 50vw;
-	height: auto;
-	background-color: rgba(255,255,255,.6);
-	border: 3px solid grey;
-	border-radius: 20px;
-	margin-top: 3rem;
-	padding: 15px;
+	max-width: 40rem;
+
+	background-color: white;
+	border-radius: 9px;
 	font-size: 1.2rem;
+	margin: auto;
+	margin-top: 5rem;
+	padding: 15px;
+	text-align: center;
 }
 
 @media screen and (max-width: 1099px) {
 	reservationForm {
 		margin: 0 auto;
-		margin-top: 1rem;
+	}
+
+	#mapid {
+		margin-bottom: 1rem;
 	}
 
 	reservationForm .waitText {

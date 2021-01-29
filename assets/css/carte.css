@@ -1,5 +1,7 @@
 #mapid {
+  z-index: 4;
   height: 70vh;
   max-height: 30rem;
   width: 580px;
+  box-shadow: 0 0 20px 3px black;
 }
