@@ -1,0 +1,36 @@
+
+
+.rond1,
+.rond2,
+.rond3 {
+    z-index: 0;
+    position: absolute;
+
+    background-color: #788DFF;
+    border-radius: 50%;
+    opacity: .6;
+}
+
+.rond1 {
+    width: 40vw;
+    height: 40vw;
+
+    top: 3rem;
+    left: -10rem;
+}
+
+.rond2 {
+    width: 30vw;
+    height: 30vw;
+
+    bottom: -5rem;
+    right:-7rem;
+}
+
+.rond3 {
+    width: 15vw;
+    height: 15vw;
+
+    top: -2rem;
+    right: -2rem;
+}

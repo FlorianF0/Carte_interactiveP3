@@ -4,11 +4,11 @@ section.slideshow {
 	width: 960px;
 	max-width: 85vw;
 	height: 240px;
-	padding: 10px;
-	margin: 0 auto;
-	background-color: black;
+
 	border-radius:5px;
-	box-shadow: 3px 3px 3px rgba(100,100,100,.4);
+	box-shadow: 10px 19px 3px rgba(100,100,100,.4);
+	margin: 0 auto;
+	margin-top: 2rem;
 }
 
 
@@ -17,6 +17,7 @@ section.slideshow .container {
 	width: 960px;
 	max-width: 85vw;
 	height: 240px;
+
 	overflow: hidden;
 	margin: 0 auto;
 }
@@ -64,7 +65,6 @@ section.slideshow figcaption {
 	background-color: rgb(0,0,0, 0.5);
 	text-align: center;
 	color: white;
-	font-family: "Georgia";
 }
 
 @-moz-keyframes slider {
@@ -77,24 +77,25 @@ slideReader {
 	display: block;
 	position: relative;
 	bottom: 10px;
-	width: 6.4rem;
-	margin:0 auto;
-	background-color: white;
+	width: 14rem;
+
 	border-radius: 2px;
+	margin:0 auto;
 	padding: 5px;
-	box-shadow: 1px grey inset;
-	
 }
 
 .arrowPrev,
 .arrowNext,
 .pauseBtn,
 #playPause {
-	color: black;
-	font-size: 1.5rem;
-	padding: 5px;
+	width: 30px;
+
+	cursor: pointer;
+	background-color: #f2ce82;
 	border: none;
-	background-color: white;
+	color: cadetblue;
+	font-size: 1rem;
+	padding: 5px 40px 5px 29px;
 }
 
 

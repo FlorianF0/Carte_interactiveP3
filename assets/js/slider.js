@@ -34,7 +34,7 @@ class Slider {
 		this.changeSlide();
 
 		document.addEventListener("keydown", function(e){
-		    	console.log('event', event)
+		    	// console.log('event', event)
 		    if(e.keyCode === 39){
 		        webBike.slider.changeSlide("+");
 		    }
@@ -90,7 +90,7 @@ class Slider {
 		else {document.getElementById(`figure${this.idFigure}`).className = "showPause";}
 		this.start = Date.now();
 		
-		console.log(this.playPauseBtn.className)
+		// console.log(this.playPauseBtn.className)
 
 		// if (this.playPauseBtn.className === "pause") document.getElementById(`figure${this.idFigure}`).style.animationPlayState = "paused";
 		if (this.playPauseBtn.className === "play" || this.playPauseBtn.className === "" ) this.tempo = setTimeout(this.changeSlide.bind(this), this.duree, "+");
@@ -109,7 +109,7 @@ class Slider {
 		    this.ecoule = Date.now() - this.start;
 		    this.playPauseBtn.innerHTML = '<i class="fa fa-play" aria-hidden="true"></i>';
 		    this.playPauseBtn.className = "pause";
-		    console.log(this.playPauseBtn)
+		    // console.log(this.playPauseBtn)
 
 
 		    return;

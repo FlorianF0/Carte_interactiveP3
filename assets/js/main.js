@@ -23,7 +23,7 @@ if( window.webBike.dataManager.getSession("orderTime") != "") {
 	var title        = stationData.station;
 
 	new Timer(
-        document.getElementsByTagName('main')[0],
+        document.getElementsByTagName('body')[0],
         title, 
         window.webBike.dataManager.getLocal("prenom"), 
         window.webBike.dataManager.getLocal("nom"), 

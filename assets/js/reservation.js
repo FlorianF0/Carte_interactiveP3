@@ -147,13 +147,13 @@ class Reservation{
       <h2>Détails de la station</h2>
 
       <div class="infoStation">
-        <p><strong>Nom de la station :</strong> ${this.title} </p>
-        <p><strong>Position :</strong> ${this.checkAddress(this.address)}</p>
+        <p><strong>Nom de la station :</strong><br/> ${this.title} </p>
+        <p><strong>Adresse :</strong><br/> ${this.checkAddress(this.address)}</p>
         <p><strong>Statut :</strong> ${this.status}</p>
 
         <ul>
-          <li> ${this.qtyAvailable} vélo${this.pluriel(this.qtyAvailable)} disponible${this.pluriel(this.qtyAvailable)}</li>
-          <li> ${this.qtyStation} place${this.pluriel(this.qtyStation)} restante${this.pluriel(this.qtyStation)}</li>
+          <li><strong>${this.qtyAvailable}</strong> vélo${this.pluriel(this.qtyAvailable)} disponible${this.pluriel(this.qtyAvailable)}</li>
+          <li><strong>${this.qtyStation}</strong> place${this.pluriel(this.qtyStation)} restante${this.pluriel(this.qtyStation)}</li>
         </ul>
       </div>
 
@@ -181,19 +181,18 @@ class Reservation{
       <h2>Détails de la station</h2>
 
       <div class="infoStation">
-        <p><strong>Nom de la station :</strong> ${data.title} </p>
-        <p><strong>Position :</strong> ${this.checkAddress(data.address)}</p>
+        <p><strong>Nom de la station :</strong> <br/>${data.title} </p>
+        <p><strong>Position :</strong><br/> ${this.checkAddress(data.address)}</p>
         <p><strong>Statut :</strong> ${data.status}</p>
 
         <ul>
-          <li> ${data.qtyAvailable} vélos disponibles</li>
-          <li> ${data.qtyStation} place${this.pluriel(data.qtyStation)} restante${this.pluriel(data.qtyStation)}</li>
+          <li><strong>${data.qtyAvailable}</strong> vélos disponibles</li>
+          <li><strong>${data.qtyStation}</strong> place${this.pluriel(data.qtyStation)} restante${this.pluriel(data.qtyStation)}</li>
         </ul>
       </div>
 
       <div class="noAvaibleStation">
-        <p>SORRY</p>
-        <p>Station fermé ou aucun vélo disponible</p>
+        <p>Désolé, aucune réservation n'est possible, aucun vélo n'est disponible ou la station est fermé.</p>
       </div>
     `;
   }
